@@ -237,8 +237,8 @@ namespace NKikimr::NStorage {
 
 namespace NKikimr {
 
-    static const TString VaultLockFile = "/Berkanavt/kikimr/state/storage.lock";
-    static const TString VaultPath = "/Berkanavt/kikimr/state/storage.txt";
+    static const TString VaultLockFile = "/opt/ydb/home/storage.lock";
+    static const TString VaultPath = "/opt/ydb/home/storage.txt";
     static TMutex VaultMutex;
 
     static bool ReadVault(NKikimrBlobStorage::TStorageFileContent& vault) {
