@@ -216,7 +216,7 @@ runs:
             ;;
           release-asan)
             params+=(
-              --build "release" --sanitize="address"
+              --build "release" --sanitize="address" -DDEBUG_INFO_LINES_ONLY
             )
             if [ $TEST_RETRY_COUNT -z ]; then
               TEST_RETRY_COUNT=1
