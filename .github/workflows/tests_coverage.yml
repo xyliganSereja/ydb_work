@@ -1,4 +1,4 @@
-name: Tests_coverage
+name: Tests-coverage-run
 
 on:
   workflow_dispatch:
@@ -16,9 +16,9 @@ jobs:
     strategy:
       fail-fast: false # do not stop wf if the tests in one of the configurations failed
       matrix:
-        build_preset: [relwithdebinfo] # list of build presets to run in each brunch
+        build_preset: [release] # list of build presets to run in each brunch
         include:
-          - build_preset: relwithdebinfo
+          - build_preset: release
             threads_count: 52
             timeout: 300
             build_target: "ydb/"
