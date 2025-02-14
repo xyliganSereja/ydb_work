@@ -98,7 +98,7 @@ TEST: https://datalens.yandex.cloud/preview/editor/0x4g3gh3h01cm-full-test-list-
 |Тип функции/запроса|1GB данных|10GB данных|100GB данных|1TB данных|10TB данных|
 |:---|:---|:---|:---|:---|:---|
 |COUNT()||||||
-|COUNT(DISTINCT)||||||
+|COUNT(DISTINCT)|||https://github.com/ydb-platform/ydb/issues/14493|||
 |SUM()||||||
 |AVG()||||||
 |MIN()/MAX()||||||
