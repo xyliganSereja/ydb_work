@@ -98,7 +98,7 @@ TEST: https://datalens.yandex.cloud/preview/editor/0x4g3gh3h01cm-full-test-list-
 |Тип функции/запроса|1GB данных|10GB данных|100GB данных|1TB данных|10TB данных|
 |:---|:---|:---|:---|:---|:---|
 |COUNT()||||||
-|COUNT(DISTINCT)|||https://github.com/ydb-platform/ydb/issues/14493|||
+|COUNT(DISTINCT)|||![GitHub issue/pull request detail](https://img.shields.io/github/issues/detail/state/ydb-platform/ydb/14493)|||
 |SUM()||||||
 |AVG()||||||
 |MIN()/MAX()||||||
@@ -125,7 +125,8 @@ TEST: https://datalens.yandex.cloud/preview/editor/0x4g3gh3h01cm-full-test-list-
 
 |Настройка TTL|До истечения|На истечение|После истечения|
 |:---|:---|:---|:---|
-|Валидный TTL для Timestamp|https://github.com/ydb-platform/ydb/issues/13523|||
+|Валидный TTL для Timestamp|![GitHub issue/pull request detail](https://img.shields.io/github/issues/detail/state/ydb-platform/ydb/13523)
+|||
 |Невалидный TTL||||
 
 ### Порядок удаления
