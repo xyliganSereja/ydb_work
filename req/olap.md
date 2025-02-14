@@ -125,6 +125,15 @@ TEST: https://datalens.yandex.cloud/preview/editor/0x4g3gh3h01cm-full-test-list-
 
 |Настройка TTL|До истечения|На истечение|После истечения|
 |:---|:---|:---|:---|
+|Валидный TTL для Timestamp|https://github.com/ydb-platform/ydb/issues/13523|||
+|Невалидный TTL||||
+
+### Порядок удаления
+Данные удаляются, начиная со самых старых записей
+
+### 
+|Настройка TTL|Datetime|TimeStamp|Date|
+|:---|:---|:---|:---|
 |Валидный TTL для Timestamp||||
 |Невалидный TTL||||
 
