@@ -33,7 +33,7 @@ jobs:
       - name: Get merged PRs
         id: pr-list
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.YDBOT_TOKEN }}
         run: |
           TYPE="${{ github.event.inputs.type }}"
           START="${{ github.event.inputs.start }}"
@@ -85,7 +85,7 @@ jobs:
       - name: Update Changelog
         uses: ./.github/actions/update_changelog 
         env:
-          YDBOT_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+          YDBOT_TOKEN: ${{ secrets.YDBOT }}
         with:
           pr_data: "${{ needs.gather-prs.outputs.prs }}"
           changelog_path: "${{ github.event.inputs.changelog_path }}"
