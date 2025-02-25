@@ -37,9 +37,7 @@ jobs:
             START="${{ github.event.inputs.start }}"
             BRANCH="${GITHUB_REF_NAME}"
             
-            echo ${{ secrets.YDBOT_TOKEN }} > token.txt
-            export GH_TOKEN=$(cat token.txt)
-            gh auth login --with-token       
+            echo ${{ secrets.YDBOT_TOKEN }}| gh auth login --with-token
             echo `gh auth status`
             
             echo "::notice:: branch = ${GITHUB_REF_NAME}, start = $START"
