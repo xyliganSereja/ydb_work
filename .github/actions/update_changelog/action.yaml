@@ -38,7 +38,7 @@ runs:
     - name: Run update_changelog.py
       shell: bash
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config --local user.email "ydbot@ydb.tech"
+        git config --local user.name "ydbot"
         git config --local github.token ${{ env.YDBOT_TOKEN }}
         python ${{ github.action_path }}/update_changelog.py pr_data.txt "${{ inputs.changelog_path }}" "${{ inputs.base_branch }}" "${{ inputs.suffix }}"
