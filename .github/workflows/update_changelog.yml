@@ -32,14 +32,17 @@ jobs:
 
       - name: Get merged PRs
         id: pr-list
+        env:
+             YDBOT_TOKEN: ${{ secrets.YDBOT_TOKEN }}
         run: |
+            echo 1
             TYPE="${{ github.event.inputs.type }}"
             START="${{ github.event.inputs.start }}"
             BRANCH="${GITHUB_REF_NAME}"
-            
+            eco2
             echo ${{ secrets.YDBOT_TOKEN }}| gh auth login --with-token
             echo `gh auth status`
-            
+            echo 3
             echo "::notice:: branch = ${GITHUB_REF_NAME}, start = $START"
 
             if [ "$TYPE" == "date" ]; then
