@@ -39,7 +39,7 @@ jobs:
             TYPE="${{ github.event.inputs.type }}"
             START="${{ github.event.inputs.start }}"
             BRANCH="${GITHUB_REF_NAME}"
-            eco2
+            echo 2
             echo ${{ secrets.YDBOT_TOKEN }}| gh auth login --with-token
             echo `gh auth status`
             echo 3
