@@ -41,6 +41,8 @@ jobs:
           BRANCH="${GITHUB_REF_NAME}"
 
           echo "::notice:: branch = ${GITHUB_REF_NAME}, start = $START"
+          echo ${{ secrets.YDBOT_TOKEN }} > token.txt
+          gh auth login --with-token < token.txt
 
           if [ "$TYPE" == "date" ]; then
             echo "Getting PRs since date: $START"
@@ -86,6 +88,7 @@ jobs:
       - name: Update Changelog
         uses: ./.github/actions/update_changelog 
         env:
+          GH_TOKEN: ${{ secrets.YDBOT_TOKEN }}
           YDBOT_TOKEN: ${{ secrets.YDBOT_TOKEN }}
         with:
           pr_data: "${{ needs.gather-prs.outputs.prs }}"
