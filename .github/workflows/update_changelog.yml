@@ -38,7 +38,7 @@ jobs:
           BRANCH="${GITHUB_REF_NAME}"
 
           echo "::notice:: branch = ${GITHUB_REF_NAME}, start = $START"
-          echo ${{ secrets.YDBOT_TOKEN }} > token.txt
+          echo ${{ secrets.GITHUB_TOKEN }} > token.txt
           gh auth login --with-token < token.txt
 
           if [ "$TYPE" == "date" ]; then
