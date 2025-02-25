@@ -33,12 +33,8 @@ jobs:
       - name: Get merged PRs
         id: pr-list
         env:
-          GH_TOKEN: ${{ secrets.YDBOT_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          curl -sS -f -I -H "Authorization: token ${{ secrets.YDBOT_TOKEN }}" https://api.github.com | grep -i x-oauth-scopes
-          curl -sS -f -I -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" https://api.github.com | grep -i x-oauth-scopes
-          curl -sS -f -I -H "Authorization: token ${{ github.token }}" https://api.github.com | grep -i x-oauth-scopes
-
           TYPE="${{ github.event.inputs.type }}"
           START="${{ github.event.inputs.start }}"
           BRANCH="${GITHUB_REF_NAME}"
@@ -89,8 +85,7 @@ jobs:
       - name: Update Changelog
         uses: ./.github/actions/update_changelog 
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          YDBOT_TOKEN: ${{ secrets.YDBOT_TOKEN }}
+          YDBOT_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
         with:
           pr_data: "${{ needs.gather-prs.outputs.prs }}"
           changelog_path: "${{ github.event.inputs.changelog_path }}"
