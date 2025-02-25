@@ -85,8 +85,8 @@ jobs:
       - name: Update Changelog
         uses: ./.github/actions/update_changelog 
         env:
-          GH_TOKEN: ${{ secrets.YDBOT_TOKEN }}
-          YDBOT_TOKEN: ${{ secrets.YDBOT_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          YDBOT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           pr_data: "${{ needs.gather-prs.outputs.prs }}"
           changelog_path: "${{ github.event.inputs.changelog_path }}"
