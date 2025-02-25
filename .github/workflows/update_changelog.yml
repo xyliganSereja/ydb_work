@@ -40,7 +40,7 @@ jobs:
           echo "::notice:: branch = ${GITHUB_REF_NAME}, start = $START"
           echo ${{ secrets.YDBOT_TOKEN }} > token.txt
           gh auth login --with-token < token.txt
-
+          gh ayth status
           if [ "$TYPE" == "date" ]; then
             echo "Getting PRs since date: $START"
             PRS=$(gh pr list --state merged --json number,title,baseRefName,mergedAt --jq ".[] | select(.baseRefName == \"$BRANCH\" and .mergedAt >= \"$START\") | {id: .number}" | jq -c -s ".")
