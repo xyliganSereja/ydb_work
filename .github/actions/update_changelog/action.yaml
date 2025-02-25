@@ -37,7 +37,10 @@ runs:
 
     - name: Run update_changelog.py
       shell: bash
+      env:
+        GIT_TOKEN: ${{ env.YDBOT_TOKEN }}
       run: |
+        git config --local credential.helper store
         git config --local user.email "ydbot@ydb.tech"
         git config --local user.name "ydbot"
         git config --local github.token ${{ env.YDBOT_TOKEN }}
