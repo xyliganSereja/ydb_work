@@ -33,7 +33,7 @@ jobs:
       - name: Get merged PRs
         id: pr-list
         env:
-          GITHUB_TOKEN: ${{ secrets.YDBOT_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
         run: |
             echo 1
             TYPE="${{ github.event.inputs.type }}"
