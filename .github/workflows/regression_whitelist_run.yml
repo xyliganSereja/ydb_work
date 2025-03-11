@@ -10,6 +10,10 @@ jobs:
     name: Build and run tests
     runs-on: [ self-hosted, "${{ inputs.runner_label || 'auto-provisioned' }}", "${{ format('build-preset-{0}', inputs.build_preset || 'relwithdebinfo') }}" ]
     timeout-minutes: 600
+    env:
+      BUILD_TARGET: "ydb/tests/sql/ ydb/tests/stress ydb/tests/functional/tpc ydb/tests/functional/benchmarks_init"
+      TEST_SIZE: small,medium,large
+      TEST_TYPE: unittest,py3test,py2test,pytest
     strategy:
       fail-fast: false # do not stop wf if the tests in one of the configurations failed
       matrix:
@@ -19,27 +23,27 @@ jobs:
           - build_preset: relwithdebinfo
             threads_count: 52
             timeout: 300
-            build_target: "ydb/tests/sql/ ydb/tests/stress ydb/tests/functional/tpc ydb/tests/functional/benchmarks_init"
-            test_size: small,medium,large
-            test_type: unittest,py3test,py2test,pytest
+            build_target: $BUILD_TARGET
+            test_size: $TEST_SIZE
+            test_type: $TEST_TYPE
           - build_preset: release-asan
             threads_count: 20
             timeout: 480
-            build_target: "ydb/tests/sql/ ydb/tests/stress ydb/tests/functional/tpc ydb/tests/functional/benchmarks_init"
-            test_size: small,medium,large
-            test_type: unittest,py3test,py2test,pytest
+            build_target: $BUILD_TARGET
+            test_size: $TEST_SIZE
+            test_type: $TEST_TYPE
           - build_preset: release-msan
             threads_count: 20
             timeout: 480
-            build_target: "ydb/tests/sql/ ydb/tests/stress ydb/tests/functional/tpc ydb/tests/functional/benchmarks_init"
-            test_size: small,medium,large
-            test_type: unittest,py3test,py2test,pytest
+            build_target: $BUILD_TARGET
+            test_size: $TEST_SIZE
+            test_type: $TEST_TYPE
           - build_preset: release-tsan
             threads_count: 10
             timeout: 600
-            build_target: "ydb/tests/sql/ ydb/tests/stress ydb/tests/functional/tpc ydb/tests/functional/benchmarks_init"
-            test_size: small,medium
-            test_type: unittest,py3test,py2test,pytest
+            build_target: $BUILD_TARGET
+            test_size: $TEST_SIZE
+            test_type: $TEST_TYPE
 
     steps:
     - name: Checkout
