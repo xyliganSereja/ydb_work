@@ -1,0 +1,222 @@
+[1] 14:33:51 [SUCCESS] vla4-8170.host.testing.ydb.yandex.net
+-- Logs begin at Tue 2025-03-04 18:40:44 MSK, end at Fri 2025-03-07 14:33:51 MSK. --
+Mar 07 09:55:33 vla4-8170.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2867617] general protection fault ip:7fcde36bb941 sp:7fcdcda3e140 error:0 in libc-2.31.so[7fcde36bb000+178000]
+Mar 07 10:00:55 vla4-8170.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2883264] general protection fault ip:7ff70b043941 sp:7ff6f4bc5140 error:0 in libc-2.31.so[7ff70b043000+178000]
+Mar 07 10:06:14 vla4-8170.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2899108] general protection fault ip:7f6022c5f941 sp:7f600c7e1140 error:0 in libc-2.31.so[7f6022c5f000+178000]
+Mar 07 10:11:30 vla4-8170.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2914476] general protection fault ip:7f670e718941 sp:7f66f7a99140 error:0 in libc-2.31.so[7f670e718000+178000]
+Mar 07 10:16:55 vla4-8170.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2930638] general protection fault ip:7fcad5b74941 sp:7fcabfef7140 error:0 in libc-2.31.so[7fcad5b74000+178000]
+Mar 07 10:22:15 vla4-8170.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2946413] general protection fault ip:7f1724038941 sp:7f170dbba140 error:0 in libc-2.31.so[7f1724038000+178000]
+Mar 07 10:27:40 vla4-8170.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2962301] general protection fault ip:7ffbd46fe941 sp:7ffbbea81140 error:0 in libc-2.31.so[7ffbd46fe000+178000]
+Mar 07 10:33:02 vla4-8170.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2978620] general protection fault ip:7f1d54744941 sp:7f1d3e2c6140 error:0 in libc-2.31.so[7f1d54744000+178000]
+Mar 07 10:38:18 vla4-8170.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2994241] general protection fault ip:7f1877755941 sp:7f1861ad8140 error:0 in libc-2.31.so[7f1877755000+178000]
+Stderr: Warning: Permanently added 'vla4-8170.host.testing.ydb.yandex.net,2a02:6b8:c0e:975:0:1354:db7:a42d' (ECDSA) to the list of known hosts.
+[2] 14:33:51 [SUCCESS] vla4-8146.host.testing.ydb.yandex.net
+-- Logs begin at Mon 2025-03-03 21:48:27 MSK, end at Fri 2025-03-07 14:33:51 MSK. --
+Mar 07 09:52:40 vla4-8146.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1642922] general protection fault ip:7ff1b0654941 sp:7ff19a9d7140 error:0 in libc-2.31.so[7ff1b0654000+178000]
+Mar 07 09:58:02 vla4-8146.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1654714] general protection fault ip:7fd79e7fd941 sp:7fd78837f140 error:0 in libc-2.31.so[7fd79e7fd000+178000]
+Mar 07 10:03:29 vla4-8146.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1667408] general protection fault ip:7f6b7737d941 sp:7f6b61700140 error:0 in libc-2.31.so[7f6b7737d000+178000]
+Mar 07 10:08:42 vla4-8146.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1679035] general protection fault ip:7f283cbfa941 sp:7f2826f7d140 error:0 in libc-2.31.so[7f283cbfa000+178000]
+Mar 07 10:14:03 vla4-8146.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1690807] general protection fault ip:7f274f052941 sp:7f27383d3140 error:0 in libc-2.31.so[7f274f052000+178000]
+Mar 07 10:19:26 vla4-8146.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1703267] general protection fault ip:7ff107066941 sp:7ff0f0be8140 error:0 in libc-2.31.so[7ff107066000+178000]
+Mar 07 10:24:46 vla4-8146.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1715258] general protection fault ip:7f2b2240e941 sp:7f2b0b78f140 error:0 in libc-2.31.so[7f2b2240e000+178000]
+Mar 07 10:30:13 vla4-8146.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1727394] general protection fault ip:7fae2ea5d941 sp:7fae17dde140 error:0 in libc-2.31.so[7fae2ea5d000+178000]
+Mar 07 10:35:35 vla4-8146.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1739703] general protection fault ip:7fcc0edb6941 sp:7fcbf8938140 error:0 in libc-2.31.so[7fcc0edb6000+178000]
+Stderr: Warning: Permanently added 'vla4-8146.host.testing.ydb.yandex.net,2a02:6b8:c0e:971:0:1354:4b16:618' (ECDSA) to the list of known hosts.
+[3] 14:33:51 [SUCCESS] vla4-8175.host.testing.ydb.yandex.net
+-- Logs begin at Wed 2025-03-05 02:43:48 MSK, end at Fri 2025-03-07 14:33:51 MSK. --
+Mar 07 09:54:55 vla4-8175.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2300614] general protection fault ip:7fde32d08941 sp:7fde1c88a140 error:0 in libc-2.31.so[7fde32d08000+178000]
+Mar 07 10:00:14 vla4-8175.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2315682] general protection fault ip:7ff153cb9941 sp:7ff13d03a140 error:0 in libc-2.31.so[7ff153cb9000+178000]
+Mar 07 10:05:33 vla4-8175.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2330456] general protection fault ip:7f0624595941 sp:7f060e117140 error:0 in libc-2.31.so[7f0624595000+178000]
+Mar 07 10:10:52 vla4-8175.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2345230] general protection fault ip:7f6b9a67b941 sp:7f6b849fe140 error:0 in libc-2.31.so[7f6b9a67b000+178000]
+Mar 07 10:16:11 vla4-8175.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2360185] general protection fault ip:7f12e786d941 sp:7f12d13ef140 error:0 in libc-2.31.so[7f12e786d000+178000]
+Mar 07 10:21:38 vla4-8175.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2375959] general protection fault ip:7ff6b42ee941 sp:7ff69de70140 error:0 in libc-2.31.so[7ff6b42ee000+178000]
+Mar 07 10:27:06 vla4-8175.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2391404] general protection fault ip:7fade5b56941 sp:7fadcfed9140 error:0 in libc-2.31.so[7fade5b56000+178000]
+Mar 07 10:32:32 vla4-8175.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2406548] general protection fault ip:7f5715c23941 sp:7f56fffa6140 error:0 in libc-2.31.so[7f5715c23000+178000]
+Mar 07 10:37:54 vla4-8175.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2421786] general protection fault ip:7f78ffd36941 sp:7f78ea0b9140 error:0 in libc-2.31.so[7f78ffd36000+178000]
+Stderr: Warning: Permanently added 'vla4-8175.host.testing.ydb.yandex.net,2a02:6b8:c0e:975:0:1354:db7:9fc6' (ECDSA) to the list of known hosts.
+[4] 14:33:51 [SUCCESS] vla4-8176.host.testing.ydb.yandex.net
+-- Logs begin at Tue 2025-03-04 17:37:49 MSK, end at Fri 2025-03-07 14:33:51 MSK. --
+Mar 07 09:55:07 vla4-8176.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2391292] general protection fault ip:7f4c8c64c941 sp:7f4c761ce140 error:0 in libc-2.31.so[7f4c8c64c000+178000]
+Mar 07 10:00:25 vla4-8176.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2405997] general protection fault ip:7fd87565f941 sp:7fd85f9e2140 error:0 in libc-2.31.so[7fd87565f000+178000]
+Mar 07 10:05:47 vla4-8176.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2421239] general protection fault ip:7fc2fb1f8941 sp:7fc2e4d7a140 error:0 in libc-2.31.so[7fc2fb1f8000+178000]
+Mar 07 10:11:11 vla4-8176.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2436383] general protection fault ip:7f2b62fab941 sp:7f2b4d32e140 error:0 in libc-2.31.so[7f2b62fab000+178000]
+Mar 07 10:16:36 vla4-8176.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2451461] general protection fault ip:7f66e8158941 sp:7f66d24db140 error:0 in libc-2.31.so[7f66e8158000+178000]
+Mar 07 10:21:51 vla4-8176.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2465976] general protection fault ip:7fcde605d941 sp:7fcdd03e0140 error:0 in libc-2.31.so[7fcde605d000+178000]
+Mar 07 10:27:18 vla4-8176.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2480788] general protection fault ip:7fcd69b70941 sp:7fcd53ef3140 error:0 in libc-2.31.so[7fcd69b70000+178000]
+Mar 07 10:32:44 vla4-8176.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2496239] general protection fault ip:7fd098e48941 sp:7fd0831cb140 error:0 in libc-2.31.so[7fd098e48000+178000]
+Mar 07 10:38:06 vla4-8176.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2511676] general protection fault ip:7fbd55bd2941 sp:7fbd3ef53140 error:0 in libc-2.31.so[7fbd55bd2000+178000]
+Stderr: Warning: Permanently added 'vla4-8176.host.testing.ydb.yandex.net,2a02:6b8:c0e:975:0:1354:db7:a431' (ECDSA) to the list of known hosts.
+[5] 14:33:51 [SUCCESS] vla4-8156.host.testing.ydb.yandex.net
+-- Logs begin at Tue 2025-03-04 16:45:56 MSK, end at Fri 2025-03-07 14:33:51 MSK. --
+Mar 07 09:53:05 vla4-8156.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2764333] general protection fault ip:7fe171159941 sp:7fe15acdb140 error:0 in libc-2.31.so[7fe171159000+178000]
+Mar 07 09:58:32 vla4-8156.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2779748] general protection fault ip:7fbc98a3f941 sp:7fbc81dc0140 error:0 in libc-2.31.so[7fbc98a3f000+178000]
+Mar 07 10:03:56 vla4-8156.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2796025] general protection fault ip:7f425c447941 sp:7f42457c8140 error:0 in libc-2.31.so[7f425c447000+178000]
+Mar 07 10:09:23 vla4-8156.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2811835] general protection fault ip:7f114cf72941 sp:7f1136af4140 error:0 in libc-2.31.so[7f114cf72000+178000]
+Mar 07 10:14:37 vla4-8156.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2827383] general protection fault ip:7f51a7e3a941 sp:7f51919bc140 error:0 in libc-2.31.so[7f51a7e3a000+178000]
+Mar 07 10:20:02 vla4-8156.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2843452] general protection fault ip:7f62c3cd3941 sp:7f62ae056140 error:0 in libc-2.31.so[7f62c3cd3000+178000]
+Mar 07 10:25:16 vla4-8156.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2859137] general protection fault ip:7fc86a86e941 sp:7fc8543f0140 error:0 in libc-2.31.so[7fc86a86e000+178000]
+Mar 07 10:30:41 vla4-8156.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2875224] general protection fault ip:7f9c0a101941 sp:7f9bf3c83140 error:0 in libc-2.31.so[7f9c0a101000+178000]
+Mar 07 10:36:05 vla4-8156.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2891130] general protection fault ip:7f735868d941 sp:7f7342a10140 error:0 in libc-2.31.so[7f735868d000+178000]
+Stderr: Warning: Permanently added 'vla4-8156.host.testing.ydb.yandex.net,2a02:6b8:c0e:975:0:1354:db7:a441' (ECDSA) to the list of known hosts.
+[6] 14:33:51 [SUCCESS] vla4-8148.host.testing.ydb.yandex.net
+-- Logs begin at Tue 2025-03-04 17:18:21 MSK, end at Fri 2025-03-07 14:33:51 MSK. --
+Mar 07 09:52:53 vla4-8148.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2401923] general protection fault ip:7f60b10c4941 sp:7f609b447140 error:0 in libc-2.31.so[7f60b10c4000+178000]
+Mar 07 09:58:20 vla4-8148.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2417354] general protection fault ip:7feb017c0941 sp:7feaeb342140 error:0 in libc-2.31.so[7feb017c0000+178000]
+Mar 07 10:03:41 vla4-8148.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2432291] general protection fault ip:7f9adeb92941 sp:7f9ac8714140 error:0 in libc-2.31.so[7f9adeb92000+178000]
+Mar 07 10:08:56 vla4-8148.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2447159] general protection fault ip:7fe10648b941 sp:7fe0f080e140 error:0 in libc-2.31.so[7fe10648b000+178000]
+Mar 07 10:14:15 vla4-8148.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2462175] general protection fault ip:7f0189bb9941 sp:7f0173f3c140 error:0 in libc-2.31.so[7f0189bb9000+178000]
+Mar 07 10:19:39 vla4-8148.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2477513] general protection fault ip:7f53d0358941 sp:7f53b96d9140 error:0 in libc-2.31.so[7f53d0358000+178000]
+Mar 07 10:25:03 vla4-8148.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2492728] general protection fault ip:7fe9d0241941 sp:7fe9ba5c4140 error:0 in libc-2.31.so[7fe9d0241000+178000]
+Mar 07 10:30:25 vla4-8148.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2507545] general protection fault ip:7f2341f8b941 sp:7f232bb0d140 error:0 in libc-2.31.so[7f2341f8b000+178000]
+Mar 07 10:35:47 vla4-8148.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2522434] general protection fault ip:7f4604649941 sp:7f45ee9cc140 error:0 in libc-2.31.so[7f4604649000+178000]
+Stderr: Warning: Permanently added 'vla4-8148.host.testing.ydb.yandex.net,2a02:6b8:c0e:975:0:1354:db7:9ac8' (ECDSA) to the list of known hosts.
+[7] 14:33:51 [SUCCESS] vla4-8151.host.testing.ydb.yandex.net
+-- Logs begin at Wed 2025-03-05 05:19:04 MSK, end at Fri 2025-03-07 14:33:51 MSK. --
+Mar 07 09:54:43 vla4-8151.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1859279] general protection fault ip:7f20ed445941 sp:7f20d77c8140 error:0 in libc-2.31.so[7f20ed445000+178000]
+Mar 07 09:59:58 vla4-8151.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1873201] general protection fault ip:7f3554743941 sp:7f353e2c5140 error:0 in libc-2.31.so[7f3554743000+178000]
+Mar 07 10:05:21 vla4-8151.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1887730] general protection fault ip:7f2948820941 sp:7f2931ba1140 error:0 in libc-2.31.so[7f2948820000+178000]
+Mar 07 10:10:40 vla4-8151.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1902038] general protection fault ip:7f1de753a941 sp:7f1dd10bc140 error:0 in libc-2.31.so[7f1de753a000+178000]
+Mar 07 10:15:59 vla4-8151.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1916517] general protection fault ip:7f17a8475941 sp:7f1791ff7140 error:0 in libc-2.31.so[7f17a8475000+178000]
+Mar 07 10:21:21 vla4-8151.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1931132] general protection fault ip:7fb829dbe941 sp:7fb814141140 error:0 in libc-2.31.so[7fb829dbe000+178000]
+Mar 07 10:26:45 vla4-8151.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1945529] general protection fault ip:7f3738f9a941 sp:7f372231b140 error:0 in libc-2.31.so[7f3738f9a000+178000]
+Mar 07 10:32:01 vla4-8151.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1959608] general protection fault ip:7f1139b82941 sp:7f1123704140 error:0 in libc-2.31.so[7f1139b82000+178000]
+Mar 07 10:37:23 vla4-8151.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1973821] general protection fault ip:7fa9b72a0941 sp:7fa9a0e22140 error:0 in libc-2.31.so[7fa9b72a0000+178000]
+Stderr: Warning: Permanently added 'vla4-8151.host.testing.ydb.yandex.net,2a02:6b8:c0e:975:0:1354:db7:a145' (ECDSA) to the list of known hosts.
+[8] 14:33:51 [SUCCESS] vla4-8172.host.testing.ydb.yandex.net
+-- Logs begin at Wed 2025-03-05 08:11:26 MSK, end at Fri 2025-03-07 14:33:51 MSK. --
+Mar 07 09:55:44 vla4-8172.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2355146] general protection fault ip:7ff0cd9d8941 sp:7ff0b755a140 error:0 in libc-2.31.so[7ff0cd9d8000+178000]
+Mar 07 10:01:06 vla4-8172.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2370116] general protection fault ip:7fcc8215e941 sp:7fcc6b4df140 error:0 in libc-2.31.so[7fcc8215e000+178000]
+Mar 07 10:06:28 vla4-8172.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2385312] general protection fault ip:7f2fb3b65941 sp:7f2f9dee8140 error:0 in libc-2.31.so[7f2fb3b65000+178000]
+Mar 07 10:11:45 vla4-8172.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2400493] general protection fault ip:7fcd4b66e941 sp:7fcd359f1140 error:0 in libc-2.31.so[7fcd4b66e000+178000]
+Mar 07 10:17:07 vla4-8172.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2415231] general protection fault ip:7f8acbb2d941 sp:7f8ab5eb0140 error:0 in libc-2.31.so[7f8acbb2d000+178000]
+Mar 07 10:22:29 vla4-8172.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2430306] general protection fault ip:7f7b8f01e941 sp:7f7b793a1140 error:0 in libc-2.31.so[7f7b8f01e000+178000]
+Mar 07 10:27:57 vla4-8172.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2445848] general protection fault ip:7fd45647b941 sp:7fd4407fe140 error:0 in libc-2.31.so[7fd45647b000+178000]
+Mar 07 10:33:19 vla4-8172.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2460835] general protection fault ip:7fe0f12aa941 sp:7fe0db62d140 error:0 in libc-2.31.so[7fe0f12aa000+178000]
+Mar 07 10:38:40 vla4-8172.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2475997] general protection fault ip:7f858c2d2941 sp:7f8576655140 error:0 in libc-2.31.so[7f858c2d2000+178000]
+Stderr: Warning: Permanently added 'vla4-8172.host.testing.ydb.yandex.net,2a02:6b8:c0e:975:0:1354:db7:a141' (ECDSA) to the list of known hosts.
+[9] 14:33:51 [SUCCESS] vla4-8162.host.testing.ydb.yandex.net
+-- Logs begin at Tue 2025-03-04 16:44:12 MSK, end at Fri 2025-03-07 14:33:51 MSK. --
+Mar 07 09:54:22 vla4-8162.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1909194] general protection fault ip:7fdba9ee5941 sp:7fdb93a67140 error:0 in libc-2.31.so[7fdba9ee5000+178000]
+Mar 07 09:59:37 vla4-8162.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1923517] general protection fault ip:7f1212574941 sp:7f11fb8f5140 error:0 in libc-2.31.so[7f1212574000+178000]
+Mar 07 10:05:02 vla4-8162.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1937837] general protection fault ip:7fb5b951c941 sp:7fb5a389f140 error:0 in libc-2.31.so[7fb5b951c000+178000]
+Mar 07 10:10:28 vla4-8162.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1952474] general protection fault ip:7f9bd4b87941 sp:7f9bbef0a140 error:0 in libc-2.31.so[7f9bd4b87000+178000]
+Mar 07 10:15:47 vla4-8162.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1966798] general protection fault ip:7f197b433941 sp:7f19657b6140 error:0 in libc-2.31.so[7f197b433000+178000]
+Mar 07 10:21:04 vla4-8162.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1981095] general protection fault ip:7f1150d8e941 sp:7f113a10f140 error:0 in libc-2.31.so[7f1150d8e000+178000]
+Mar 07 10:26:30 vla4-8162.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1995865] general protection fault ip:7f01c40fb941 sp:7f01adc7d140 error:0 in libc-2.31.so[7f01c40fb000+178000]
+Mar 07 10:31:49 vla4-8162.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2009662] general protection fault ip:7fb9d89d7941 sp:7fb9c1d58140 error:0 in libc-2.31.so[7fb9d89d7000+178000]
+Mar 07 10:37:10 vla4-8162.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2023796] general protection fault ip:7f36940e4941 sp:7f367d465140 error:0 in libc-2.31.so[7f36940e4000+178000]
+Stderr: Warning: Permanently added 'vla4-8162.host.testing.ydb.yandex.net,2a02:6b8:c0e:975:0:1354:db7:a140' (ECDSA) to the list of known hosts.
+[10] 14:33:51 [SUCCESS] vla4-8179.host.testing.ydb.yandex.net
+-- Logs begin at Tue 2025-03-04 16:44:19 MSK, end at Fri 2025-03-07 14:33:51 MSK. --
+Mar 07 09:50:30 vla4-8179.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2769045] general protection fault ip:7fbc849b0941 sp:7fbc6ed33140 error:0 in libc-2.31.so[7fbc849b0000+178000]
+Mar 07 09:55:57 vla4-8179.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2785268] general protection fault ip:7f893b05b941 sp:7f89253de140 error:0 in libc-2.31.so[7f893b05b000+178000]
+Mar 07 10:01:22 vla4-8179.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2801519] general protection fault ip:7f8840fe3941 sp:7f882a364140 error:0 in libc-2.31.so[7f8840fe3000+178000]
+Mar 07 10:06:40 vla4-8179.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2817320] general protection fault ip:7f60985d3941 sp:7f6082956140 error:0 in libc-2.31.so[7f60985d3000+178000]
+Mar 07 10:12:00 vla4-8179.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2833054] general protection fault ip:7fef94c45941 sp:7fef7e7c7140 error:0 in libc-2.31.so[7fef94c45000+178000]
+Mar 07 10:17:24 vla4-8179.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2848529] general protection fault ip:7fb0a81ea941 sp:7fb091d6c140 error:0 in libc-2.31.so[7fb0a81ea000+178000]
+Mar 07 10:22:43 vla4-8179.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2864711] general protection fault ip:7f913e4f9941 sp:7f912807b140 error:0 in libc-2.31.so[7f913e4f9000+178000]
+Mar 07 10:28:09 vla4-8179.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2880541] general protection fault ip:7f39e27bd941 sp:7f39cc33f140 error:0 in libc-2.31.so[7f39e27bd000+178000]
+Mar 07 10:33:34 vla4-8179.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2896784] general protection fault ip:7f70c210d941 sp:7f70abc8f140 error:0 in libc-2.31.so[7f70c210d000+178000]
+Mar 07 10:38:52 vla4-8179.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2912563] general protection fault ip:7fc9064b3941 sp:7fc8f0836140 error:0 in libc-2.31.so[7fc9064b3000+178000]
+Stderr: Warning: Permanently added 'vla4-8179.host.testing.ydb.yandex.net,2a02:6b8:c0e:975:0:1354:db7:a143' (ECDSA) to the list of known hosts.
+[11] 14:33:51 [SUCCESS] vla4-8167.host.testing.ydb.yandex.net
+-- Logs begin at Tue 2025-03-04 19:29:15 MSK, end at Fri 2025-03-07 14:33:51 MSK. --
+Mar 07 09:51:21 vla4-8167.host.testing.ydb.yandex.net kernel: traps: ydbd.System[3341191] general protection fault ip:7f010b76c941 sp:7f00f52ee140 error:0 in libc-2.31.so[7f010b76c000+178000]
+Mar 07 09:56:45 vla4-8167.host.testing.ydb.yandex.net kernel: traps: ydbd.System[3357302] general protection fault ip:7f113175d941 sp:7f111b2df140 error:0 in libc-2.31.so[7f113175d000+178000]
+Mar 07 10:02:03 vla4-8167.host.testing.ydb.yandex.net kernel: traps: ydbd.System[3374332] general protection fault ip:7eff18e1c941 sp:7eff0299e140 error:0 in libc-2.31.so[7eff18e1c000+178000]
+Mar 07 10:07:23 vla4-8167.host.testing.ydb.yandex.net kernel: traps: ydbd.System[3390605] general protection fault ip:7fcad8ea0941 sp:7fcac2a22140 error:0 in libc-2.31.so[7fcad8ea0000+178000]
+Mar 07 10:12:46 vla4-8167.host.testing.ydb.yandex.net kernel: traps: ydbd.System[3407131] general protection fault ip:7fd972ee2941 sp:7fd95d265140 error:0 in libc-2.31.so[7fd972ee2000+178000]
+Mar 07 10:18:05 vla4-8167.host.testing.ydb.yandex.net kernel: traps: ydbd.System[3423290] general protection fault ip:7feca5bef941 sp:7fec8ef70140 error:0 in libc-2.31.so[7feca5bef000+178000]
+Mar 07 10:23:25 vla4-8167.host.testing.ydb.yandex.net kernel: traps: ydbd.System[3439635] general protection fault ip:7fe46648f941 sp:7fe450011140 error:0 in libc-2.31.so[7fe46648f000+178000]
+Mar 07 10:28:51 vla4-8167.host.testing.ydb.yandex.net kernel: traps: ydbd.System[3456071] general protection fault ip:7fcbbbd76941 sp:7fcba58f8140 error:0 in libc-2.31.so[7fcbbbd76000+178000]
+Mar 07 10:34:13 vla4-8167.host.testing.ydb.yandex.net kernel: traps: ydbd.System[3472862] general protection fault ip:7f47032ae941 sp:7f46ed631140 error:0 in libc-2.31.so[7f47032ae000+178000]
+Mar 07 10:39:38 vla4-8167.host.testing.ydb.yandex.net kernel: traps: ydbd.System[3489842] general protection fault ip:7f3e26989941 sp:7f3e1050b140 error:0 in libc-2.31.so[7f3e26989000+178000]
+Stderr: Warning: Permanently added 'vla4-8167.host.testing.ydb.yandex.net,2a02:6b8:c0e:975:0:1354:db7:a442' (ECDSA) to the list of known hosts.
+[12] 14:33:51 [FAILURE] vla4-8168.host.testing.ydb.yandex.net Exited with error code 1
+-- Logs begin at Tue 2025-03-04 16:45:30 MSK, end at Fri 2025-03-07 14:33:51 MSK. --
+-- No entries --
+Stderr: Warning: Permanently added 'vla4-8168.host.testing.ydb.yandex.net,2a02:6b8:c0e:975:0:1354:db7:a524' (ECDSA) to the list of known hosts.
+[13] 14:33:51 [SUCCESS] vla4-8149.host.testing.ydb.yandex.net
+-- Logs begin at Tue 2025-03-04 16:46:23 MSK, end at Fri 2025-03-07 14:33:51 MSK. --
+Mar 07 09:50:48 vla4-8149.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2151885] general protection fault ip:7fb6e95e2941 sp:7fb6d3965140 error:0 in libc-2.31.so[7fb6e95e2000+178000]
+Mar 07 09:56:13 vla4-8149.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2166801] general protection fault ip:7f9bc24c6941 sp:7f9bac048140 error:0 in libc-2.31.so[7f9bc24c6000+178000]
+Mar 07 10:01:34 vla4-8149.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2181424] general protection fault ip:7fa2c4929941 sp:7fa2ae4ab140 error:0 in libc-2.31.so[7fa2c4929000+178000]
+Mar 07 10:06:59 vla4-8149.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2197025] general protection fault ip:7f7d949f1941 sp:7f7d7ed74140 error:0 in libc-2.31.so[7f7d949f1000+178000]
+Mar 07 10:12:17 vla4-8149.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2211859] general protection fault ip:7fe1bd8a8941 sp:7fe1a7c2b140 error:0 in libc-2.31.so[7fe1bd8a8000+178000]
+Mar 07 10:17:36 vla4-8149.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2226737] general protection fault ip:7fedaeaac941 sp:7fed97e2d140 error:0 in libc-2.31.so[7fedaeaac000+178000]
+Mar 07 10:23:01 vla4-8149.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2242269] general protection fault ip:7fe214c6d941 sp:7fe1fe7ef140 error:0 in libc-2.31.so[7fe214c6d000+178000]
+Mar 07 10:28:28 vla4-8149.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2257541] general protection fault ip:7f7f4c7fc941 sp:7f7f3637e140 error:0 in libc-2.31.so[7f7f4c7fc000+178000]
+Mar 07 10:33:46 vla4-8149.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2272233] general protection fault ip:7f299b677941 sp:7f29849f8140 error:0 in libc-2.31.so[7f299b677000+178000]
+Mar 07 10:39:06 vla4-8149.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2287376] general protection fault ip:7fcceab77941 sp:7fccd3ef8140 error:0 in libc-2.31.so[7fcceab77000+178000]
+Stderr: Warning: Permanently added 'vla4-8149.host.testing.ydb.yandex.net,2a02:6b8:c0e:975:0:1354:db7:a133' (ECDSA) to the list of known hosts.
+[14] 14:33:51 [SUCCESS] vla4-8147.host.testing.ydb.yandex.net
+-- Logs begin at Wed 2025-03-05 07:56:33 MSK, end at Fri 2025-03-07 14:33:51 MSK. --
+Mar 07 09:51:58 vla4-8147.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1820635] general protection fault ip:7fe07534d941 sp:7fe05eecf140 error:0 in libc-2.31.so[7fe07534d000+178000]
+Mar 07 09:57:18 vla4-8147.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1834802] general protection fault ip:7f21a05f9941 sp:7f218a97c140 error:0 in libc-2.31.so[7f21a05f9000+178000]
+Mar 07 10:02:41 vla4-8147.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1849046] general protection fault ip:7f34c7041941 sp:7f34b0bc3140 error:0 in libc-2.31.so[7f34c7041000+178000]
+Mar 07 10:08:00 vla4-8147.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1863540] general protection fault ip:7f15af629941 sp:7f15989aa140 error:0 in libc-2.31.so[7f15af629000+178000]
+Mar 07 10:13:27 vla4-8147.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1878439] general protection fault ip:7f995c341941 sp:7f9945ec3140 error:0 in libc-2.31.so[7f995c341000+178000]
+Mar 07 10:18:50 vla4-8147.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1892891] general protection fault ip:7fc31ecdd941 sp:7fc30885f140 error:0 in libc-2.31.so[7fc31ecdd000+178000]
+Mar 07 10:24:10 vla4-8147.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1907066] general protection fault ip:7f4a9c9c8941 sp:7f4a8654a140 error:0 in libc-2.31.so[7f4a9c9c8000+178000]
+Mar 07 10:29:25 vla4-8147.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1921295] general protection fault ip:7f3b8b945941 sp:7f3b754c7140 error:0 in libc-2.31.so[7f3b8b945000+178000]
+Mar 07 10:34:47 vla4-8147.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1935813] general protection fault ip:7f3932d46941 sp:7f391d0c9140 error:0 in libc-2.31.so[7f3932d46000+178000]
+Mar 07 10:40:10 vla4-8147.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1950273] general protection fault ip:7fc8406e6941 sp:7fc82a268140 error:0 in libc-2.31.so[7fc8406e6000+178000]
+Stderr: Warning: Permanently added 'vla4-8147.host.testing.ydb.yandex.net,2a02:6b8:c0e:975:0:1354:db7:a446' (ECDSA) to the list of known hosts.
+[15] 14:33:51 [SUCCESS] vla4-8150.host.testing.ydb.yandex.net
+-- Logs begin at Tue 2025-03-04 11:35:19 MSK, end at Fri 2025-03-07 14:33:51 MSK. --
+Mar 07 09:51:09 vla4-8150.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1857811] general protection fault ip:7f2f46ffe941 sp:7f2f31381140 error:0 in libc-2.31.so[7f2f46ffe000+178000]
+Mar 07 09:56:33 vla4-8150.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1872211] general protection fault ip:7f991d50e941 sp:7f9907891140 error:0 in libc-2.31.so[7f991d50e000+178000]
+Mar 07 10:01:50 vla4-8150.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1886465] general protection fault ip:7f36d3f3f941 sp:7f36bdac1140 error:0 in libc-2.31.so[7f36d3f3f000+178000]
+Mar 07 10:07:11 vla4-8150.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1900550] general protection fault ip:7fe8a0ee7941 sp:7fe88aa69140 error:0 in libc-2.31.so[7fe8a0ee7000+178000]
+Mar 07 10:12:30 vla4-8150.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1915025] general protection fault ip:7fec0d95f941 sp:7febf74e1140 error:0 in libc-2.31.so[7fec0d95f000+178000]
+Mar 07 10:17:53 vla4-8150.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1929551] general protection fault ip:7ff631933941 sp:7ff61acb4140 error:0 in libc-2.31.so[7ff631933000+178000]
+Mar 07 10:23:13 vla4-8150.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1943676] general protection fault ip:7f482e48f941 sp:7f4817810140 error:0 in libc-2.31.so[7f482e48f000+178000]
+Mar 07 10:28:39 vla4-8150.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1958452] general protection fault ip:7f1e7ab79941 sp:7f1e64efc140 error:0 in libc-2.31.so[7f1e7ab79000+178000]
+Mar 07 10:34:01 vla4-8150.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1973303] general protection fault ip:7f77deeaa941 sp:7f77c8a2c140 error:0 in libc-2.31.so[7f77deeaa000+178000]
+Mar 07 10:39:19 vla4-8150.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1987349] general protection fault ip:7f6214779941 sp:7f61feafc140 error:0 in libc-2.31.so[7f6214779000+178000]
+Stderr: Warning: Permanently added 'vla4-8150.host.testing.ydb.yandex.net,2a02:6b8:c0e:975:0:1354:db7:a777' (ECDSA) to the list of known hosts.
+[16] 14:33:51 [SUCCESS] vla4-8169.host.testing.ydb.yandex.net
+-- Logs begin at Tue 2025-03-04 16:41:12 MSK, end at Fri 2025-03-07 14:33:51 MSK. --
+Mar 07 09:52:27 vla4-8169.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2347043] general protection fault ip:7f6650cf3941 sp:7f663a074140 error:0 in libc-2.31.so[7f6650cf3000+178000]
+Mar 07 09:57:50 vla4-8169.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2362033] general protection fault ip:7fb334748941 sp:7fb31e2ca140 error:0 in libc-2.31.so[7fb334748000+178000]
+Mar 07 10:03:14 vla4-8169.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2377745] general protection fault ip:7f8d40fca941 sp:7f8d2ab4c140 error:0 in libc-2.31.so[7f8d40fca000+178000]
+Mar 07 10:08:31 vla4-8169.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2392556] general protection fault ip:7f658bdbd941 sp:7f6576140140 error:0 in libc-2.31.so[7f658bdbd000+178000]
+Mar 07 10:13:51 vla4-8169.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2407641] general protection fault ip:7fc1d49eb941 sp:7fc1bdd6c140 error:0 in libc-2.31.so[7fc1d49eb000+178000]
+Mar 07 10:19:14 vla4-8169.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2422832] general protection fault ip:7fa864237941 sp:7fa84ddb9140 error:0 in libc-2.31.so[7fa864237000+178000]
+Mar 07 10:24:34 vla4-8169.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2438134] general protection fault ip:7fe6300b2941 sp:7fe619c34140 error:0 in libc-2.31.so[7fe6300b2000+178000]
+Mar 07 10:30:01 vla4-8169.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2453683] general protection fault ip:7fa388533941 sp:7fa3720b5140 error:0 in libc-2.31.so[7fa388533000+178000]
+Mar 07 10:35:23 vla4-8169.host.testing.ydb.yandex.net kernel: traps: ydbd.System[2468501] general protection fault ip:7f71061e2941 sp:7f70f0565140 error:0 in libc-2.31.so[7f71061e2000+178000]
+Stderr: Warning: Permanently added 'vla4-8169.host.testing.ydb.yandex.net,2a02:6b8:c0e:975:0:1354:db7:a430' (ECDSA) to the list of known hosts.
+[17] 14:33:51 [SUCCESS] vla4-8165.host.testing.ydb.yandex.net
+-- Logs begin at Tue 2025-03-04 17:19:24 MSK, end at Fri 2025-03-07 14:33:51 MSK. --
+Mar 07 09:53:57 vla4-8165.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1845656] general protection fault ip:7f2e2a2b6941 sp:7f2e13637140 error:0 in libc-2.31.so[7f2e2a2b6000+178000]
+Mar 07 09:59:21 vla4-8165.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1860102] general protection fault ip:7f5963415941 sp:7f594cf97140 error:0 in libc-2.31.so[7f5963415000+178000]
+Mar 07 10:04:35 vla4-8165.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1874367] general protection fault ip:7f3f9dd7f941 sp:7f3f87901140 error:0 in libc-2.31.so[7f3f9dd7f000+178000]
+Mar 07 10:09:55 vla4-8165.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1888590] general protection fault ip:7fd168944941 sp:7fd152cc7140 error:0 in libc-2.31.so[7fd168944000+178000]
+Mar 07 10:15:19 vla4-8165.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1903093] general protection fault ip:7fef3827b941 sp:7fef21dfd140 error:0 in libc-2.31.so[7fef3827b000+178000]
+Mar 07 10:20:38 vla4-8165.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1917208] general protection fault ip:7ff3d55c3941 sp:7ff3bf946140 error:0 in libc-2.31.so[7ff3d55c3000+178000]
+Mar 07 10:25:51 vla4-8165.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1931077] general protection fault ip:7f62ca0c5941 sp:7f62b3c47140 error:0 in libc-2.31.so[7f62ca0c5000+178000]
+Mar 07 10:31:16 vla4-8165.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1945687] general protection fault ip:7f8a59ec5941 sp:7f8a44248140 error:0 in libc-2.31.so[7f8a59ec5000+178000]
+Mar 07 10:36:30 vla4-8165.host.testing.ydb.yandex.net kernel: traps: ydbd.System[1959703] general protection fault ip:7f55c5fb9941 sp:7f55afb3b140 error:0 in libc-2.31.so[7f55c5fb9000+178000]
+Stderr: Warning: Permanently added 'vla4-8165.host.testing.ydb.yandex.net,2a02:6b8:c0e:975:0:1354:db7:a47e' (ECDSA) to the list of known hosts.
+[18] 14:33:51 [FAILURE] vla4-8160.host.testing.ydb.yandex.net Exited with error code 1
+-- Logs begin at Fri 2025-03-07 12:57:32 MSK, end at Fri 2025-03-07 14:33:51 MSK. --
+-- No entries --
+Stderr: Warning: Permanently added 'vla4-8160.host.testing.ydb.yandex.net,2a02:6b8:c0e:975:0:1354:db7:a0fd' (ECDSA) to the list of known hosts.
+[19] 14:33:51 [FAILURE] vla4-8145.host.testing.ydb.yandex.net Exited with error code 1
+-- Logs begin at Mon 2025-03-03 18:06:51 MSK, end at Fri 2025-03-07 14:33:51 MSK. --
+-- No entries --
+Stderr: Warning: Permanently added 'vla4-8145.host.testing.ydb.yandex.net,2a02:6b8:c0e:971:0:1354:4b16:638' (ECDSA) to the list of known hosts.
+[20] 14:33:52 [SUCCESS] vla4-8144.host.testing.ydb.yandex.net
+-- Logs begin at Mon 2025-03-03 16:56:45 MSK, end at Fri 2025-03-07 14:33:51 MSK. --
+Mar 07 09:51:47 vla4-8144.host.testing.ydb.yandex.net kernel: traps: ydbd.System[399240] general protection fault ip:7f704da87941 sp:7f7037609140 error:0 in libc-2.31.so[7f704da87000+178000]
+Mar 07 09:57:07 vla4-8144.host.testing.ydb.yandex.net kernel: traps: ydbd.System[410204] general protection fault ip:7f574f9c2941 sp:7f5739544140 error:0 in libc-2.31.so[7f574f9c2000+178000]
+Mar 07 10:02:29 vla4-8144.host.testing.ydb.yandex.net kernel: traps: ydbd.System[421661] general protection fault ip:7f23387ec941 sp:7f232236e140 error:0 in libc-2.31.so[7f23387ec000+178000]
+Mar 07 10:07:48 vla4-8144.host.testing.ydb.yandex.net kernel: traps: ydbd.System[432599] general protection fault ip:7fcbd4454941 sp:7fcbbdfd6140 error:0 in libc-2.31.so[7fcbd4454000+178000]
+Mar 07 10:13:15 vla4-8144.host.testing.ydb.yandex.net kernel: traps: ydbd.System[444071] general protection fault ip:7f4153d7b941 sp:7f413e0fe140 error:0 in libc-2.31.so[7f4153d7b000+178000]
+Mar 07 10:18:38 vla4-8144.host.testing.ydb.yandex.net kernel: traps: ydbd.System[455143] general protection fault ip:7f9910062941 sp:7f98fa3e5140 error:0 in libc-2.31.so[7f9910062000+178000]
+Mar 07 10:23:56 vla4-8144.host.testing.ydb.yandex.net kernel: traps: ydbd.System[466463] general protection fault ip:7fb7b5ffb941 sp:7fb7a037e140 error:0 in libc-2.31.so[7fb7b5ffb000+178000]
+Mar 07 10:29:09 vla4-8144.host.testing.ydb.yandex.net kernel: traps: ydbd.System[477323] general protection fault ip:7f8cf668d941 sp:7f8ce0a10140 error:0 in libc-2.31.so[7f8cf668d000+178000]
+Mar 07 10:34:26 vla4-8144.host.testing.ydb.yandex.net kernel: traps: ydbd.System[488543] general protection fault ip:7f848e851941 sp:7f8477bd2140 error:0 in libc-2.31.so[7f848e851000+178000]
+Mar 07 10:39:50 vla4-8144.host.testing.ydb.yandex.net kernel: traps: ydbd.System[499853] general protection fault ip:7f3310658941 sp:7f32fa9db140 error:0 in libc-2.31.so[7f3310658000+178000]
+Stderr: Warning: Permanently added 'vla4-8144.host.testing.ydb.yandex.net,2a02:6b8:c0e:971:0:1354:4b16:31c' (ECDSA) to the list of known hosts.

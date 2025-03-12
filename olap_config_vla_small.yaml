@@ -1,0 +1,451 @@
+---
+metadata:
+  kind: MainConfig
+  cluster: "ydb:9xy63v4e-6obn-ojtn-wp3i-ddgarkq99rag"
+  version: 3
+config:
+  feature_flags:
+    suppress_compatibility_check: true
+  actor_system_config:
+    use_auto_config: true
+    node_type: STORAGE
+  dynamic_nameservice_config:
+    max_static_node_id: 50000
+  grpc_config:
+    grpc_memory_quota_bytes: "1073741824"
+    host: '[::]'
+    keep_alive_enable: true
+    keep_alive_idle_timeout_trigger_sec: 90
+    keep_alive_max_probe_count: 3
+    keep_alive_probe_interval_sec: 10
+    port: 2135
+    start_grpc_proxy: true
+    streaming_config:
+      enable_output_streams: true
+  kqpconfig:
+    enable: true
+  log_config:
+    cluster_name: olap-testing-vla-acceptance
+    entry:
+    - component: CMS
+      level: 6
+    - component: HIVE
+      level: 7
+    - component: LOCAL
+      level: 7
+    - component: TENANT_POOL
+      level: 7
+    - component: TENANT_SLOT_BROKER
+      level: 7
+    - component: BOOTSTRAPPER
+      level: 7
+    - component: FLAT_TX_SCHEMESHARD
+      level: 5
+    - component: INTERCONNECT_NETWORK
+      level: 5
+    - component: BS_QUEUE
+      level: 2
+    - component: PQ_READ_PROXY
+      level: 6
+    - component: PQ_WRITE_PROXY
+      level: 6
+    - component: PQ_MIRRORER
+      level: 6
+    - component: PQ_METACACHE
+      level: 5
+    - component: PERSQUEUE_READ_BALANCER
+      level: 5
+    - component: S3_WRAPPER
+      level: 5
+    - component: STATISTICS
+      level: 7
+    sys_log: false
+    format: json
+    uaclient_config:
+      uri: "[fd53::1]:16400"
+      grpc_max_message_size: 4194304
+  table_profiles_config:
+    caching_policies:
+    - executor_cache_size: 4194304
+      name: default
+    - executor_cache_size: 2097152
+      name: small
+    - executor_cache_size: 33554432
+      name: big
+    - executor_cache_size: 3145728
+      name: log
+    compaction_policies:
+    - compaction_policy:
+        background_snapshot_policy:
+          priority_base: 100
+          resource_broker_task: background_compaction
+          threshold: 101
+          time_factor: 1
+        backup_resource_broker_task: scan
+        default_task_priority: 5
+        dropped_rows_percent_to_compact: 50
+        generation:
+        - background_compaction_policy:
+            priority_base: 100
+            resource_broker_task: background_compaction
+            threshold: 101
+            time_factor: 1
+          count_to_compact: 8
+          force_count_to_compact: 8
+          force_size_to_compact: 134217728
+          generation_id: 0
+          keep_in_cache: true
+          resource_broker_task: compaction_gen1
+          size_to_compact: 0
+        - background_compaction_policy:
+            priority_base: 100
+            resource_broker_task: background_compaction
+            threshold: 101
+            time_factor: 1
+          count_to_compact: 5
+          force_count_to_compact: 16
+          force_size_to_compact: 536870912
+          generation_id: 1
+          keep_in_cache: false
+          resource_broker_task: compaction_gen2
+          size_to_compact: 41943040
+        - background_compaction_policy:
+            priority_base: 100
+            resource_broker_task: background_compaction
+            threshold: 101
+            time_factor: 1
+          count_to_compact: 5
+          force_count_to_compact: 16
+          force_size_to_compact: 17179869184
+          generation_id: 2
+          keep_in_cache: false
+          resource_broker_task: compaction_gen3
+          size_to_compact: 419430400
+        in_mem_force_size_to_snapshot: 16777216
+        in_mem_force_steps_to_snapshot: 500
+        in_mem_resource_broker_task: compaction_gen0
+        in_mem_size_to_snapshot: 4194304
+        in_mem_steps_to_snapshot: 300
+        min_data_page_size: 7168
+        read_ahead_hi_threshold: 67108864
+        read_ahead_lo_threshold: 16777216
+        snapshot_resource_broker_task: compaction_gen0
+      name: default
+    - compaction_policy:
+        background_snapshot_policy:
+          priority_base: 100
+          resource_broker_task: background_compaction
+          threshold: 101
+          time_factor: 1
+        backup_resource_broker_task: scan
+        default_task_priority: 5
+        dropped_rows_percent_to_compact: 50
+        generation:
+        - background_compaction_policy:
+            priority_base: 100
+            resource_broker_task: background_compaction
+            threshold: 101
+            time_factor: 1
+          count_to_compact: 16
+          force_count_to_compact: 16
+          force_size_to_compact: 536870912
+          generation_id: 0
+          keep_in_cache: false
+          resource_broker_task: compaction_gen1
+          size_to_compact: 0
+        - background_compaction_policy:
+            priority_base: 100
+            resource_broker_task: background_compaction
+            threshold: 101
+            time_factor: 1
+          count_to_compact: 16
+          force_count_to_compact: 16
+          force_size_to_compact: 4294967296
+          generation_id: 1
+          keep_in_cache: false
+          resource_broker_task: compaction_gen2
+          size_to_compact: 4294967296
+        - background_compaction_policy:
+            priority_base: 100
+            resource_broker_task: background_compaction
+            threshold: 101
+            time_factor: 1
+          count_to_compact: 5
+          force_count_to_compact: 5
+          force_size_to_compact: 17179869184
+          generation_id: 2
+          keep_in_cache: false
+          resource_broker_task: compaction_gen3
+          size_to_compact: 0
+        in_mem_force_size_to_snapshot: 16777216
+        in_mem_force_steps_to_snapshot: 500
+        in_mem_resource_broker_task: compaction_gen0
+        in_mem_size_to_snapshot: 16777216
+        in_mem_steps_to_snapshot: 300
+        min_data_page_size: 7168
+        read_ahead_hi_threshold: 67108864
+        read_ahead_lo_threshold: 16777216
+        snapshot_resource_broker_task: compaction_gen0
+      name: big_part
+    - compaction_policy:
+        background_snapshot_policy:
+          priority_base: 100
+          resource_broker_task: background_compaction
+          threshold: 101
+          time_factor: 1
+        backup_resource_broker_task: scan
+        default_task_priority: 5
+        dropped_rows_percent_to_compact: 50
+        generation:
+        - background_compaction_policy:
+            priority_base: 100
+            resource_broker_task: background_compaction
+            threshold: 101
+            time_factor: 1
+          count_to_compact: 40
+          force_count_to_compact: 60
+          force_size_to_compact: 146800640
+          generation_id: 0
+          keep_in_cache: true
+          resource_broker_task: compaction_gen1
+          size_to_compact: 104857600
+        - background_compaction_policy:
+            priority_base: 100
+            resource_broker_task: background_compaction
+            threshold: 101
+            time_factor: 1
+          count_to_compact: 40
+          force_count_to_compact: 60
+          force_size_to_compact: 2147483648
+          generation_id: 1
+          keep_in_cache: false
+          resource_broker_task: compaction_gen2
+          size_to_compact: 1073741824
+        - background_compaction_policy:
+            priority_base: 100
+            resource_broker_task: background_compaction
+            threshold: 101
+            time_factor: 1
+          count_to_compact: 40
+          force_count_to_compact: 60
+          force_size_to_compact: 2147483648000
+          generation_id: 2
+          keep_in_cache: false
+          resource_broker_task: compaction_gen3
+          size_to_compact: 1073741824000
+        in_mem_force_size_to_snapshot: 4194304
+        in_mem_force_steps_to_snapshot: 100000
+        in_mem_resource_broker_task: compaction_gen0
+        in_mem_size_to_snapshot: 1048576
+        in_mem_steps_to_snapshot: 100000
+        min_data_page_size: 64512
+        read_ahead_hi_threshold: 67108864
+        read_ahead_lo_threshold: 16777216
+        snapshot_resource_broker_task: compaction_gen0
+      name: log
+    - compaction_policy:
+        background_snapshot_policy:
+          priority_base: 100
+          resource_broker_task: background_compaction
+          threshold: 101
+          time_factor: 1
+        backup_resource_broker_task: scan
+        default_task_priority: 5
+        dropped_rows_percent_to_compact: 50
+        generation:
+        - background_compaction_policy:
+            priority_base: 100
+            resource_broker_task: background_compaction
+            threshold: 101
+            time_factor: 1
+          count_to_compact: 40
+          force_count_to_compact: 60
+          force_size_to_compact: 146800640
+          generation_id: 0
+          keep_in_cache: true
+          resource_broker_task: compaction_gen1
+          size_to_compact: 104857600
+        - background_compaction_policy:
+            priority_base: 100
+            resource_broker_task: background_compaction
+            threshold: 101
+            time_factor: 1
+          count_to_compact: 40
+          force_count_to_compact: 60
+          force_size_to_compact: 2147483648
+          generation_id: 1
+          keep_in_cache: false
+          resource_broker_task: compaction_gen2
+          size_to_compact: 1073741824
+        - background_compaction_policy:
+            priority_base: 100
+            resource_broker_task: background_compaction
+            threshold: 101
+            time_factor: 1
+          count_to_compact: 40
+          force_count_to_compact: 60
+          force_size_to_compact: 2147483648000
+          generation_id: 2
+          keep_in_cache: false
+          resource_broker_task: compaction_gen3
+          size_to_compact: 1073741824000
+        in_mem_force_size_to_snapshot: 4194304
+        in_mem_force_steps_to_snapshot: 100000
+        in_mem_resource_broker_task: compaction_gen0
+        in_mem_size_to_snapshot: 1048576
+        in_mem_steps_to_snapshot: 100000
+        min_data_page_size: 262144
+        read_ahead_hi_threshold: 67108864
+        read_ahead_lo_threshold: 16777216
+        snapshot_resource_broker_task: compaction_gen0
+      name: log_lz4
+    execution_policies:
+    - name: default
+      pipeline_config:
+        data_tx_cache_size: 20
+        disable_immediate: false
+        enable_out_of_order: true
+        enable_soft_updates: false
+        num_active_tx: 8
+      tx_read_size_limit: 5368709120
+    - enable_filter_by_key: true
+      name: filter_by_key
+      pipeline_config:
+        data_tx_cache_size: 20
+        disable_immediate: false
+        enable_out_of_order: true
+        enable_soft_updates: false
+        num_active_tx: 8
+      tx_read_size_limit: 5368709120
+    - executor_fast_log_policy: false
+      name: log
+      pipeline_config:
+        data_tx_cache_size: 20
+        disable_immediate: false
+        enable_out_of_order: true
+        enable_soft_updates: false
+        num_active_tx: 8
+      tx_read_size_limit: 10737418240
+    partitioning_policies:
+    - auto_merge: false
+      auto_split: true
+      name: default
+      size_to_split: 2147483648
+    - auto_merge: false
+      auto_split: true
+      name: big_parts
+      size_to_split: 10737418240
+    - auto_merge: false
+      auto_split: true
+      name: log
+      size_to_split: 2147483648
+    - auto_merge: false
+      auto_split: true
+      name: log_lz4
+      size_to_split: 536870912
+    replication_policies:
+    - name: disabled
+    - allow_follower_promotion: true
+      cross_data_center: false
+      follower_count: 1
+      name: single
+    - allow_follower_promotion: true
+      cross_data_center: true
+      follower_count: 1
+      name: single_per_zone
+    storage_policies:
+    - column_families:
+      - storage_config:
+          data:
+            preferred_pool_kind: ssd
+          log:
+            preferred_pool_kind: ssd
+          sys_log:
+            preferred_pool_kind: ssd
+      name: default
+    - column_families:
+      - storage_config:
+          data:
+            preferred_pool_kind: ssd
+          log:
+            preferred_pool_kind: ssd
+          sys_log:
+            preferred_pool_kind: ssd
+      name: log
+    - column_families:
+      - column_codec: ColumnCodecLZ4
+        storage_config:
+          data:
+            preferred_pool_kind: ssd
+          log:
+            preferred_pool_kind: ssd
+          sys_log:
+            preferred_pool_kind: ssd
+      name: log_lz4
+    table_profiles:
+    - caching_policy: default
+      compaction_policy: default
+      execution_policy: default
+      name: default
+      partitioning_policy: default
+      replication_policy: default
+      storage_policy: default
+    - caching_policy: log
+      compaction_policy: log
+      execution_policy: log
+      name: log
+      partitioning_policy: log
+      replication_policy: disabled
+      storage_policy: log
+    - caching_policy: log
+      compaction_policy: log_lz4
+      execution_policy: log
+      name: log_lz4
+      partitioning_policy: log_lz4
+      replication_policy: disabled
+      storage_policy: log_lz4
+  yaml_config_enabled: true
+allowed_labels:
+  node_id:
+    type: string
+  host:
+    type: string
+  tenant:
+    type: string
+selector_config:
+- description: config for kubernetes dynnodes
+  selector:
+    dynamic: true
+  config:
+    actor_system_config:
+      use_auto_config: true
+      node_type: COMPUTE
+      cpu_count: 16
+    memory_controller_config:
+      query_execution_limit_percent: 50
+      activities_limit_percent: 60
+    table_service_config:
+      enable_spilling_nodes: All
+      spilling_service_config:
+        local_file_config:
+          enable: true
+          max_total_size: 536870912000
+          max_file_size: 107374182400
+      resource_manager:
+        verbose_memory_limit_exception: true
+    feature_flags: !inherit
+      enable_statistics: true
+      enable_external_data_sources: true
+      enable_script_execution_operations: true
+      enable_table_datetime64: true
+      enable_pg_syntax: true
+    column_shard_config:
+      max_read_staleness_ms: 1800000
+      disabled_on_scheme_shard: false
+    hive_config:
+      warm_up_boot_waiting_period: 300000
+- description: pqconfig disable credentials
+  selector: {}
+  config:
+    pqconfig: !inherit
+      require_credentials_in_new_protocol: false

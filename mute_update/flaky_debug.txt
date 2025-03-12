@@ -1,0 +1,1 @@
+ydb/core/tx/schemeshard/ut_pq_reboots TPqGroupTestReboots.AlterWithReboots-PQConfigTransactionsAtSchemeShard-true # owner TEAM:@ydb-platform/Topics success_rate 0%, state Flaky, days in state 10, pass_count 0, fail count 3
