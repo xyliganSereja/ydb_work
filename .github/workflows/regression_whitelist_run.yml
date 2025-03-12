@@ -11,7 +11,7 @@ jobs:
     runs-on: [ self-hosted, "${{ inputs.runner_label || 'auto-provisioned' }}", "${{ format('build-preset-{0}', inputs.build_preset || 'relwithdebinfo') }}" ]
     timeout-minutes: 600
     env:
-      BUILD_TARGET: "ydb/tests/sql/ ydb/tests/stress ydb/tests/functional/tpc ydb/tests/functional/benchmarks_init"
+      BUILD_TARGETS_JSON: '["ydb/tests/sql/", "ydb/tests/stress", "ydb/tests/functional/tpc", "ydb/tests/functional/benchmarks_init"]'
       TEST_SIZE: small,medium,large
       TEST_TYPE: unittest,py3test,py2test,pytest
     strategy:
@@ -23,25 +23,21 @@ jobs:
           - build_preset: relwithdebinfo
             threads_count: 52
             timeout: 300
-            build_target: $BUILD_TARGET
             test_size: $TEST_SIZE
             test_type: $TEST_TYPE
           - build_preset: release-asan
             threads_count: 20
             timeout: 480
-            build_target: $BUILD_TARGET
             test_size: $TEST_SIZE
             test_type: $TEST_TYPE
           - build_preset: release-msan
             threads_count: 20
             timeout: 480
-            build_target: $BUILD_TARGET
             test_size: $TEST_SIZE
             test_type: $TEST_TYPE
           - build_preset: release-tsan
             threads_count: 10
             timeout: 600
-            build_target: $BUILD_TARGET
             test_size: $TEST_SIZE
             test_type: $TEST_TYPE
 
@@ -50,7 +46,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         ref: ${{ matrix.branch }}
-    
+
     - name: Setup ssh key for slice 
       uses: webfactory/ssh-agent@v0.9.0
       with:
@@ -60,14 +56,20 @@ jobs:
       uses: ./.github/actions/setup_ci_ydb_service_account_key_file_credentials
       with:
         ci_ydb_service_account_key_file_credentials: ${{ secrets.CI_YDB_SERVICE_ACCOUNT_KEY_FILE_CREDENTIALS }}
-
+    
+    - name: Convert JSON to build target string
+      id: setup_build_target
+      run: |
+        BUILD_TARGETS=$(echo $BUILD_TARGETS_JSON | jq -r '. | join(" ")')
+        echo "BUILD_TARGET=$BUILD_TARGETS" >> $GITHUB_ENV
+    
     - name: Build and test
       timeout-minutes:  ${{ matrix.timeout }}
       uses: ./.github/actions/build_and_test_ya
       with:
         build_preset: ${{ matrix.build_preset }}
         increment: false
-        build_target: ${{ matrix.build_target }}
+        build_target: ${{ env.BUILD_TARGET }}
         run_build: true
         run_tests: true
         test_retry_count: 3
