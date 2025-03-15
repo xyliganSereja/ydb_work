@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false # do not stop wf if the tests in one of the configurations failed
       matrix:
-        branch: [main]  #  branches to test
+        branch: [dev-tpch]  #  branches to test
         build_preset: [relwithdebinfo, release-asan, release-msan, release-tsan] # list of build presets to run in each brunch
         include:
           - build_preset: relwithdebinfo
