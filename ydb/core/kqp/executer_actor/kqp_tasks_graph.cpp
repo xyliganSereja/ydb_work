@@ -511,7 +511,7 @@ void BuildKqpStageChannels(TKqpTasksGraph& tasksGraph, TStageInfo& stageInfo,
             }
             if (input.GetTypeCase() == NKqpProto::TKqpPhyConnection::kMap) {
                 // We want to enforce sourceShardCount from map connection, cause it can be at most one map connection
-                // and ColumnShardHash in Shuffle will use this parameter to shuffle on this map (same with taskIdByHash mapping)
+                // and ColumnShardHash in Shuffle will use this parameter to shuffle on this map (same with taskIndexByHash mapping)
                 hasMap = true;
                 break;
             }
@@ -521,9 +521,9 @@ void BuildKqpStageChannels(TKqpTasksGraph& tasksGraph, TStageInfo& stageInfo,
     // if it is stage, where we don't inherit parallelism.
     if (enableShuffleElimination && !hasMap && !isFusedWithScanStage && stageInfo.Tasks.size() > 0 && stage.InputsSize() > 0) {
         columnShardHashV1Params.SourceShardCount = stageInfo.Tasks.size();
-        columnShardHashV1Params.TaskIdByHash = std::make_shared<TVector<ui64>>(columnShardHashV1Params.SourceShardCount);
+        columnShardHashV1Params.TaskIndexByHash = std::make_shared<TVector<ui64>>(columnShardHashV1Params.SourceShardCount);
         for (std::size_t i = 0; i < columnShardHashV1Params.SourceShardCount; ++i) {
-            (*columnShardHashV1Params.TaskIdByHash)[i] = i;
+            (*columnShardHashV1Params.TaskIndexByHash)[i] = i;
         }
 
         for (auto& input : stage.GetInputs()) {
@@ -1083,59 +1083,6 @@ void FillTaskMeta(const TStageInfo& stageInfo, const TTask& task, NYql::NDqProto
 
                 olapProgram->SetParametersSchema(schema);
                 olapProgram->SetParameters(parameters);
-
-                class TResolverTable: public NArrow::NSSA::IColumnResolver {
-                private:
-                    const TTableConstInfo& TableInfo;
-                public:
-                    TResolverTable(const TTableConstInfo& tableInfo)
-                        : TableInfo(tableInfo) {
-
-                    }
-
-                    virtual TString GetColumnName(ui32 id, bool required = true) const override {
-                        for (auto&& i : TableInfo.Columns) {
-                            if (i.second.Id == id) {
-                                return i.first;
-                            }
-                        }
-                        AFL_ENSURE(!required)("id", id);
-                        return "";
-                    }
-                    virtual std::optional<ui32> GetColumnIdOptional(const TString& name) const override {
-                        auto it = TableInfo.Columns.find(name);
-                        if (it == TableInfo.Columns.end()) {
-                            return std::nullopt;
-                        } else {
-                            return it->second.Id;
-                        }
-                    }
-                    virtual NArrow::NSSA::TColumnInfo GetDefaultColumn() const override {
-                        AFL_ENSURE(false);
-                        return NArrow::NSSA::TColumnInfo::Generated(0, "");
-                    }
-                };
-
-                if (!!stageInfo.Meta.ColumnTableInfoPtr) {
-                    std::shared_ptr<NSchemeShard::TOlapSchema> olapSchema = std::make_shared<NSchemeShard::TOlapSchema>();
-                    olapSchema->ParseFromLocalDB(stageInfo.Meta.ColumnTableInfoPtr->Description.GetSchema());
-                    if (olapSchema->GetIndexes().GetIndexes().size()) {
-                        NOlap::TProgramContainer container;
-                        TResolverTable resolver(*tableInfo);
-                        container.Init(resolver, *olapProgram).Ensure();
-                        auto data = NOlap::NIndexes::NRequest::TDataForIndexesCheckers::Build(container);
-                        if (data) {
-                            for (auto&& [indexId, i] : olapSchema->GetIndexes().GetIndexes()) {
-                                AFL_ENSURE(!!i.GetIndexMeta());
-                                i.GetIndexMeta()->FillIndexCheckers(data, *olapSchema);
-                            }
-                            auto checker = data->GetCoverChecker();
-                            if (!!checker) {
-                                checker.SerializeToProto(*olapProgram->MutableIndexChecker());
-                            }
-                        }
-                    }
-                }
             } else {
                 YQL_ENSURE(task.Meta.ReadInfo.OlapProgram.Program.empty());
             }
@@ -1206,7 +1153,7 @@ void FillOutputDesc(
                         << " for the columns: " << "[" << JoinSeq(",", output.KeyColumns) << "]"
                     );
                     Y_ENSURE(columnShardHashV1Params.SourceShardCount != 0, "ShardCount for ColumnShardHashV1 Shuffle can't be equal to 0");
-                    Y_ENSURE(columnShardHashV1Params.TaskIdByHash != nullptr, "TaskIdByHash for ColumnShardHashV1 wasn't propogated to this stage");
+                    Y_ENSURE(columnShardHashV1Params.TaskIndexByHash != nullptr, "TaskIndexByHash for ColumnShardHashV1 wasn't propogated to this stage");
                     Y_ENSURE(columnShardHashV1Params.SourceTableKeyColumnTypes != nullptr, "SourceTableKeyColumnTypes for ColumnShardHashV1 wasn't propogated to this stage");
 
                     Y_ENSURE(
@@ -1225,9 +1172,9 @@ void FillOutputDesc(
                         columnTypes->Add(type.GetTypeId());
                     }
 
-                    auto* taskIdByHash = columnShardHashV1.MutableTaskIdByHash();
-                    for (std::size_t taskID: *columnShardHashV1Params.TaskIdByHash) {
-                        taskIdByHash->Add(taskID);
+                    auto* taskIndexByHash = columnShardHashV1.MutableTaskIndexByHash();
+                    for (std::size_t taskID: *columnShardHashV1Params.TaskIndexByHash) {
+                        taskIndexByHash->Add(taskID);
                     }
                     break;
                 }
