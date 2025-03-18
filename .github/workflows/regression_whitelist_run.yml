@@ -11,8 +11,27 @@ on:
         default: '' # Empty by default
 
 jobs:
-  main:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      branches: ${{ steps.set-branches.outputs.branches }}
+    env:
+      DEFAULT_BRANCHES_JSON: '["main", "stable-25-1-1"]'
+    steps:
+      - name: Determine branches
+        id: set-branches
+        run: |
+          if [ "${{ github.event.inputs.branch }}" != "" ]; then
+            echo "Using input branch: ['${{ github.event.inputs.branch }}']"
+            echo "::set-output name=branches::['${{ github.event.inputs.branch }}']"
+          else
+            echo "Using default branches: $DEFAULT_BRANCHES_JSON"
+            echo "::set-output name=branches::${{ env.DEFAULT_BRANCHES_JSON }}"
+          fi
+
+  build:
     name: Build and run tests
+    needs: prepare
     runs-on: [self-hosted, "${{ inputs.runner_label || 'auto-provisioned' }}", "${{ format('build-preset-{0}', inputs.build_preset || 'relwithdebinfo') }}"]
     timeout-minutes: 600
     env:
@@ -24,7 +43,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        branch: ${{ fromJson(inputs.branch != '' && format('["{0}"]', inputs.branch) || $DEFAULT_BRANCHES_JSON) }}
+        branch: ${{ fromJson(needs.prepare.outputs.branches) }}
         build_preset: [relwithdebinfo, release-asan, release-msan, release-tsan] # list of build presets to run
 
         include:
