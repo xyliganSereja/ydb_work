@@ -6,9 +6,9 @@ on:
   workflow_dispatch:
     inputs:
       branch:
-        description: 'Branch to run the workflow on'
-        required: true
-        default: 'main'
+        description: 'Branch to run the workflow on (leave blank to run default branches)'
+        required: false
+        default: '' # Empty by default
 
 jobs:
   main:
@@ -19,12 +19,14 @@ jobs:
       BUILD_TARGETS_JSON: '["ydb/tests/sql/", "ydb/tests/stress", "ydb/tests/functional/tpc", "ydb/tests/functional/benchmarks_init"]'
       TEST_SIZE: small,medium,large
       TEST_TYPE: unittest,py3test,py2test,pytest
+      DEFAULT_BRANCHES_JSON: '["main", "stable-25-1-1"]'
 
     strategy:
       fail-fast: false
       matrix:
-        branch: [main, stable-25-1-1] # branches to test
-        build_preset: [relwithdebinfo, release-asan, release-msan, release-tsan] # list of build presets to run in each branch
+        branch: ${{ fromJson(inputs.branch == '' && env.DEFAULT_BRANCHES_JSON || '["' + inputs.branch + '"]') }}
+        build_preset: [relwithdebinfo, release-asan, release-msan, release-tsan] # list of build presets to run
+
         include:
           - build_preset: relwithdebinfo
             threads_count: 52
