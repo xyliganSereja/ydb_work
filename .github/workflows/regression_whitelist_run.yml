@@ -11,7 +11,6 @@ jobs:
     runs-on: [self-hosted, "${{ inputs.runner_label || 'auto-provisioned' }}", "${{ format('build-preset-{0}', inputs.build_preset || 'relwithdebinfo') }}"]
     timeout-minutes: 600
     env:
-      ALLOWED_BRANCHES: "main stable-25-1-1 stable-25-1 dev_wf_regression_test"
       BUILD_TARGETS_JSON: '["ydb/tests/sql/", "ydb/tests/stress", "ydb/tests/functional/tpc", "ydb/tests/functional/benchmarks_init"]'
       TEST_SIZE: small,medium,large
       TEST_TYPE: unittest,py3test,py2test,pytest
@@ -19,6 +18,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        branch: [main, stable-25-1-1] # branches to test
         build_preset: [relwithdebinfo, release-asan, release-msan, release-tsan] # list of build presets to run in each brunch
         include:
           - build_preset: relwithdebinfo
@@ -46,15 +46,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref_name }}
+              ref: ${{ matrix.branch }}
 
-      - name: Ensure branch is allowed
-        id: check_branch
-        run: |
-          if ! echo "${{ env.ALLOWED_BRANCHES }}" | grep -qw "${{ github.ref_name }}"; then
-            echo "This workflow is configured to run only on branches: ${{ env.ALLOWED_BRANCHES }}"
-            exit 1
-          fi
 
       - name: Setup ssh key for slice
         uses: webfactory/ssh-agent@v0.9.0
