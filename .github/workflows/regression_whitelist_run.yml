@@ -19,7 +19,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        branch: [${{ github.ref_name }}]  # Branches to test
         build_preset: [relwithdebinfo, release-asan, release-msan, release-tsan]
         include:
           - build_preset: relwithdebinfo
@@ -47,12 +46,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: ${{ matrix.branch }}
+          ref: ${{ github.ref_name }}
 
       - name: Ensure branch is allowed
         id: check_branch
         run: |
-          if ! echo "${{ env.ALLOWED_BRANCHES }}" | grep -qw "${{ matrix.branch }}"; then
+          if ! echo "${{ env.ALLOWED_BRANCHES }}" | grep -qw "${{ github.ref_name }}"; then
             echo "This workflow is configured to run only on branches: ${{ env.ALLOWED_BRANCHES }}"
             exit 1
           fi
