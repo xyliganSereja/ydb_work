@@ -16,7 +16,7 @@ jobs:
     outputs:
       branches: ${{ steps.set-branches.outputs.branches }}
     env:
-      DEFAULT_BRANCHES_JSON: '["main", "stable-25-1-1"]'
+      DEFAULT_BRANCHES_JSON: '[\"main\", \"stable-25-1-1\"]'
     steps:
       - name: Determine branches
         id: set-branches
@@ -28,7 +28,7 @@ jobs:
             echo "Using default branches: $DEFAULT_BRANCHES_JSON"
             branches="${{ env.DEFAULT_BRANCHES_JSON }}"
           fi
-          echo "branches=${{ toJson( fromJson( branches ) ) }}" >> $GITHUB_OUTPUT
+          echo "branches=$branches" >> $GITHUB_OUTPUT
 
 
   build:
