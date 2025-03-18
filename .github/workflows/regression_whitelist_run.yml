@@ -24,7 +24,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        branch: ${{ fromJson(inputs.branch != '' && format('["{0}"]', inputs.branch) || env.DEFAULT_BRANCHES_JSON) }}
+        branch: ${{ fromJson(inputs.branch != '' && format('["{0}"]', inputs.branch) || DEFAULT_BRANCHES_JSON) }}
         build_preset: [relwithdebinfo, release-asan, release-msan, release-tsan] # list of build presets to run
 
         include:
