@@ -28,7 +28,7 @@ jobs:
             echo "Using default branches: $DEFAULT_BRANCHES_JSON"
             branches="${{ env.DEFAULT_BRANCHES_JSON }}"
           fi
-          echo "branches=$branches" >> $GITHUB_OUTPUT
+          echo "branches=${{ toJson( fromJson( branches ) ) }}" >> $GITHUB_OUTPUT
 
 
   build:
