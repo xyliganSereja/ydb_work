@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: "0 23 * * *"  # Every day at 23:00
   workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to run the workflow on'
+        required: true
+        default: 'main'
 
 jobs:
   main:
@@ -19,7 +24,7 @@ jobs:
       fail-fast: false
       matrix:
         branch: [main, stable-25-1-1] # branches to test
-        build_preset: [relwithdebinfo, release-asan, release-msan, release-tsan] # list of build presets to run in each brunch
+        build_preset: [relwithdebinfo, release-asan, release-msan, release-tsan] # list of build presets to run in each branch
         include:
           - build_preset: relwithdebinfo
             threads_count: 52
@@ -46,8 +51,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-              ref: ${{ matrix.branch }}
-
+          ref: ${{ matrix.branch }}
 
       - name: Setup ssh key for slice
         uses: webfactory/ssh-agent@v0.9.0
@@ -66,7 +70,7 @@ jobs:
           echo "BUILD_TARGET=$BUILD_TARGETS" >> $GITHUB_ENV
 
       - name: Build and test
-        timeout-minutes:  ${{ matrix.timeout }}
+        timeout-minutes: ${{ matrix.timeout }}
         uses: ./.github/actions/build_and_test_ya
         with:
           build_preset: ${{ matrix.build_preset }}
