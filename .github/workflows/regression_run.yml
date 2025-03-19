@@ -34,9 +34,14 @@ jobs:
             timeout: 600
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
       - name: Run YDB Tests ${{ github.ref_name }} 
         timeout-minutes: ${{ matrix.timeout }}
-        uses: ./.github/workflows/build_and_test_ya_provisioned.yml
+        uses: ./.github/workflows/build_and_test_ya.yml
         with:
           runner_additional_label: ${{ format('build-preset-{0}', matrix.build_preset) }}
           build_target: ${{ env.TEST_TARGETS }}
