@@ -18,7 +18,6 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        branch: ${{ github.ref_name }} # branches to test
         build_preset: [relwithdebinfo, release-asan, release-msan, release-tsan] # list of build presets to run
         include:
           - build_preset: relwithdebinfo
@@ -40,7 +39,7 @@ jobs:
         with:
           runner_label: ${{ inputs.runner_label }}
           build_preset: ${{ matrix.build_preset }}
-          branch: ${{ matrix.branch }}
+          branch: ${{ github.ref_name }} 
           threads_count: ${{ matrix.threads_count }}
           timeout: ${{ matrix.timeout }}
           test_size:  ${{ env.TEST_SIZE }}
