@@ -4,35 +4,10 @@ on:
   schedule:
     - cron: "0 23 * * *"  # Every day at 23:00
   workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Branch to run the workflow on (leave blank to run default branches)'
-        required: false
-        default: '' # Empty by default
-
-jobs:
-  prepare:
-    runs-on: ubuntu-latest
-    outputs:
-      branches: ${{ steps.set-branches.outputs.branches }}
-    env:
-      DEFAULT_BRANCHES_JSON: '[\"main\", \"stable-25-1-1\"]'
-    steps:
-      - name: Determine branches
-        id: set-branches
-        run: |
-          if [ "${{ github.event.inputs.branch }}" != "" ]; then
-            echo "Using input branch: ['${{ github.event.inputs.branch }}']"
-            branches="['${{ github.event.inputs.branch }}']"
-          else
-            echo "Using default branches: $DEFAULT_BRANCHES_JSON"
-            branches="${{ env.DEFAULT_BRANCHES_JSON }}"
-          fi
-          echo "branches=$branches" >> $GITHUB_OUTPUT
 
 
   build:
-    name: TEST ${{ matrix.build_preset }} on ${{ matrix.branch }}
+    name: TEST ${{ matrix.branch }}:${{ matrix.build_preset }}
     needs: prepare
     runs-on: [self-hosted, "${{ inputs.runner_label || 'auto-provisioned' }}", "${{ format('build-preset-{0}', inputs.build_preset || 'relwithdebinfo') }}"]
     timeout-minutes: 600
@@ -40,11 +15,12 @@ jobs:
       BUILD_TARGETS_JSON: '["ydb/tests/sql/", "ydb/tests/stress", "ydb/tests/functional/tpc", "ydb/tests/functional/benchmarks_init"]'
       TEST_SIZE: small,medium,large
       TEST_TYPE: unittest,py3test,py2test,pytest
+      BRANCH_NAME: ${{ github.ref_name }}
 
     strategy:
       fail-fast: false
       matrix:
-        branch: ${{ fromJson(needs.prepare.outputs.branches) }}
+        branch:  [$BRANCH_NAME]  # branches to test
         build_preset: [relwithdebinfo, release-asan, release-msan, release-tsan] # list of build presets to run
 
         include:
