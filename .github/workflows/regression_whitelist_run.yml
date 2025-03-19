@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
 
 
+jobs:
   main:
     name: TEST ${{ matrix.branch }}:${{ matrix.build_preset }}
     needs: prepare
