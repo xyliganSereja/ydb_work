@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  main:
+  run_all_tests:
     name: TEST ${{ github.ref_name }}:${{ matrix.build_preset }}
     runs-on: [self-hosted, "${{ inputs.runner_label || 'auto-provisioned' }}", "${{ format('build-preset-{0}', inputs.build_preset || 'relwithdebinfo') }}"]
     timeout-minutes: 600
