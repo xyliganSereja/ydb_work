@@ -44,5 +44,6 @@ jobs:
           test_threads: ${{ matrix.threads_count }}
           test_size:  ${{ env.TEST_SIZE }}
           test_type: ${{ env.TEST_TYPE }}
+          commit_sha: ${{ github.ref_name }}
           additional_ya_make_args: -DDEBUGINFO_LINES_ONLY
           test_retry_count: 3
