@@ -35,7 +35,7 @@ jobs:
 
     steps:
       - name: Run YDB Tests
-        uses: ./.github/actions/run_all_tests
+        uses: ./.github/workflows/run_all_tests.yml
         with:
           runner_label: ${{ inputs.runner_label }}
           build_preset: ${{ matrix.build_preset }}
