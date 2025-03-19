@@ -9,7 +9,6 @@ jobs:
   run_all_tests:
     name: TEST ${{ github.ref_name }}:${{ matrix.build_preset }}
     runs-on: [self-hosted, "${{ inputs.runner_label || 'auto-provisioned' }}", "${{ format('build-preset-{0}', inputs.build_preset || 'relwithdebinfo') }}"]
-    timeout-minutes: 600
     env:
       TEST_TARGETS: "ydb/tests/sql/ ydb/tests/stress ydb/tests/functional/tpc ydb/tests/functional/benchmarks_init"
       TEST_SIZE: small,medium,large
@@ -32,20 +31,19 @@ jobs:
           - build_preset: release-tsan
             threads_count: 10
             timeout: 600
+            timeout-minutes: ${{ matrix.timeout }}
+    uses: ./.github/workflows/build_and_test_ya.yml
+    with:
+      runner_additional_label: ${{ format('build-preset-{0}', matrix.build_preset) }}
+      build_target: ${{ env.TEST_TARGETS }}
+      runner_label: ${{ inputs.runner_label }}
+      build_preset: ${{ matrix.build_preset }}
+      test_threads: ${{ matrix.threads_count }}
+      test_size:  ${{ env.TEST_SIZE }}
+      test_type: ${{ env.TEST_TYPE }}
+      commit_sha: ${{ github.ref_name }}
+      additional_ya_make_args: -DDEBUGINFO_LINES_ONLY
+      test_retry_count: 3
+    secrets: inherit
 
-    steps:
 
-      - name: Run YDB Tests ${{ github.ref_name }} 
-        timeout-minutes: ${{ matrix.timeout }}
-        uses: ./.github/workflows/build_and_test_ya_provisioned.yml
-        with:
-          runner_additional_label: ${{ format('build-preset-{0}', matrix.build_preset) }}
-          build_target: ${{ env.TEST_TARGETS }}
-          runner_label: ${{ inputs.runner_label }}
-          build_preset: ${{ matrix.build_preset }}
-          test_threads: ${{ matrix.threads_count }}
-          test_size:  ${{ env.TEST_SIZE }}
-          test_type: ${{ env.TEST_TYPE }}
-          commit_sha: ${{ github.ref_name }}
-          additional_ya_make_args: -DDEBUGINFO_LINES_ONLY
-          test_retry_count: 3
