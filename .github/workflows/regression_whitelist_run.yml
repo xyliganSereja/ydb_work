@@ -6,14 +6,14 @@ on:
   workflow_dispatch:
 
 jobs:
-  run_all_tests:
+  main:
+    uses: ./.github/workflows/build_and_test_ya.yml
     name: TEST ${{ github.ref_name }}:${{ matrix.build_preset }}
     runs-on: [self-hosted, "${{ inputs.runner_label || 'auto-provisioned' }}", "${{ format('build-preset-{0}', inputs.build_preset || 'relwithdebinfo') }}"]
     env:
       TEST_TARGETS: "ydb/tests/sql/ ydb/tests/stress ydb/tests/functional/tpc ydb/tests/functional/benchmarks_init"
       TEST_SIZE: small,medium,large
       TEST_TYPE: unittest,py3test,py2test,pytest
-
     strategy:
       fail-fast: false
       matrix:
@@ -32,7 +32,6 @@ jobs:
             threads_count: 10
             timeout: 600
             timeout-minutes: ${{ matrix.timeout }}
-    uses: ./.github/workflows/build_and_test_ya.yml
     with:
       runner_additional_label: ${{ format('build-preset-{0}', matrix.build_preset) }}
       build_target: ${{ env.TEST_TARGETS }}
