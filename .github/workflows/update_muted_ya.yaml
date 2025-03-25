@@ -28,7 +28,7 @@ jobs:
         uses: ./.github/actions/setup_ci_ydb_service_account_key_file_credentials
         with:
           ci_ydb_service_account_key_file_credentials: ${{ secrets.CI_YDB_SERVICE_ACCOUNT_KEY_FILE_CREDENTIALS }}
-
+          
       - name: Update branch with main
         run: |
           git config user.name github-actions
