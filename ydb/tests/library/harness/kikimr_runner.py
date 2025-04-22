@@ -320,10 +320,6 @@ class KiKiMR(kikimr_cluster_interface.KiKiMRClusterInterface):
             raise
 
 
-    def set_configurator(self, configurator):
-            """Set a new configurator for the KiKiMR instance."""
-            self.__configurator = configurator
-
     def start(self):
         """
         Safely starts kikimr instance.
