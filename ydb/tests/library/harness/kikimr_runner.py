@@ -319,6 +319,11 @@ class KiKiMR(kikimr_cluster_interface.KiKiMRClusterInterface):
             ))
             raise
 
+
+    def set_configurator(self, configurator):
+            """Set a new configurator for the KiKiMR instance."""
+            self.__configurator = configurator
+
     def start(self):
         """
         Safely starts kikimr instance.
@@ -497,7 +502,17 @@ class KiKiMR(kikimr_cluster_interface.KiKiMRClusterInterface):
         for node in self.nodes.values():
             node.stop()
             node.start()
-
+            
+    def change_node_version(self,configurator):       
+        for node in self.nodes.values():
+            node.stop()
+        self.__configurator = configurator
+        self.__initialy_prepared = False
+        self._node_index_allocator = itertools.count(1)
+        self.prepare()
+        for node in self.nodes.values():
+            node.start()
+            
     @property
     def config_path(self):
         if self.__configurator.separate_node_configs:
