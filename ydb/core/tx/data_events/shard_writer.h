@@ -12,7 +12,6 @@
 #include <ydb/library/accessor/accessor.h>
 #include <ydb/library/actors/core/actor_bootstrapped.h>
 #include <ydb/library/actors/wilson/wilson_profile_span.h>
-#include <util/system/mutex.h>
 
 namespace NKikimr::NEvWrite {
 
@@ -120,6 +119,7 @@ private:
     void SendReply() {
         if (FailsCount.Val()) {
             Counters->OnFailedFullReply(TMonotonic::Now() - StartInstant);
+            TGuard<TMutex> guard(IssuesMutex);
             AFL_VERIFY(Code);
             LongTxActorId.Send(LongTxActorId, new TEvPrivate::TEvShardsWriteResult(*Code, Issues));
         } else {

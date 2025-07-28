@@ -30,7 +30,6 @@ namespace NKikimr::NEvWrite {
         FailsCount.Inc();
         if (AtomicCas(&HasCodeFail, 1, 0)) {
             AFL_VERIFY(!Code);
-            TGuard<TMutex> guard(IssuesMutex);
             Issues.AddIssue(message);
             Code = code;
         }
