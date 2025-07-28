@@ -12,6 +12,7 @@
 #include <ydb/library/accessor/accessor.h>
 #include <ydb/library/actors/core/actor_bootstrapped.h>
 #include <ydb/library/actors/wilson/wilson_profile_span.h>
+#include <util/system/mutex.h>
 
 namespace NKikimr::NEvWrite {
 
@@ -109,6 +110,7 @@ private:
     TAtomic HasCodeFail = 0;
     NYql::TIssues Issues;
     std::optional<Ydb::StatusIds::StatusCode> Code;
+    TMutex IssuesMutex;
 
     NActors::TActorIdentity LongTxActorId;
     std::vector<TWriteIdForShard> WriteIds;
