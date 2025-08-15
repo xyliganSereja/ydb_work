@@ -516,6 +516,7 @@ public:
                         }
 
                         Y_ABORT_UNLESS(typedBuilder.Append(bytes).ok());
+                        return true;
                     }
                 }
 

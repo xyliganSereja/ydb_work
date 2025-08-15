@@ -433,6 +433,7 @@ private:
             if (!ConvertArrowToYdbPrimitive(*type, ydbType)) {
                 return TConclusionStatus::Fail("Cannot convert arrow type to ydb one: " + type->ToString());
             }
+
             out.emplace_back(name, std::move(ydbType));
         }
 
