@@ -1,6 +1,14 @@
 #include <ydb/core/kqp/federated_query/kqp_federated_query_helpers.h>
 #include <ydb/core/kqp/ut/common/kqp_ut_common.h>
 #include <ydb/core/kqp/ut/federated_query/common/common.h>
+#include <ydb/core/kqp/ut/olap/helpers/local.h>
+#include <ydb/core/kqp/ut/olap/helpers/writer.h>
+#include <ydb/core/kqp/ut/olap/helpers/query_executor.h>
+#include <ydb/core/kqp/ut/olap/helpers/get_value.h>
+#include <ydb/core/tx/columnshard/hooks/testing/controller.h>
+#include <ydb/core/tx/columnshard/test_helper/controllers.h>
+#include <ydb/core/util/aws.h>
+#include <ydb/core/wrappers/fake_storage.h>
 #include <ydb/library/yql/providers/s3/actors/yql_s3_actors_factory_impl.h>
 #include <yql/essentials/utils/log/log.h>
 #include <ydb/public/sdk/cpp/include/ydb-cpp-sdk/client/draft/ydb_scripting.h>
@@ -10,6 +18,7 @@
 #include <ydb/public/sdk/cpp/include/ydb-cpp-sdk/client/types/operation/operation.h>
 
 #include <library/cpp/testing/unittest/registar.h>
+#include <library/cpp/testing/hook/hook.h>
 
 #include <util/generic/strbuf.h>
 #include <util/generic/string.h>
@@ -354,6 +363,121 @@ Y_UNIT_TEST_SUITE(S3AwsCredentials) {
             UNIT_ASSERT_STRING_CONTAINS_C(readyOp.Status().GetIssues().ToString(), "parameter is not supported with type inference: data.datetime.format", readyOp.Status().GetIssues().ToString());
         }
     }
+
+    Y_UNIT_TEST(TieringSecretAccessCheck) {
+        const TString externalDataSourceName = "/Root/tier1";
+        const TString tableName = "/Root/olapStore/olapTable";
+        const TString secretAccessKeyId = "aws-access-key-id";
+        const TString secretAccessKey = "aws-secret-access-key";
+
+        auto s3ActorsFactory = NYql::NDq::CreateS3ActorsFactory();
+        
+        TKikimrSettings runnerSettings;
+        runnerSettings.WithSampleTables = false;
+        runnerSettings.SetColumnShardAlterObjectEnabled(true);
+        NKikimrConfig::TFeatureFlags featureFlags;
+        featureFlags.SetEnableColumnshardBool(true);
+        featureFlags.SetEnableColumnStore(true);
+        featureFlags.SetEnableTieringInColumnShard(true);
+        featureFlags.SetEnableExternalDataSources(true);
+        runnerSettings.SetFeatureFlags(featureFlags);
+        runnerSettings.AppConfig.MutableQueryServiceConfig()->AddAvailableExternalDataSources("ObjectStorage");
+        runnerSettings.AppConfig.MutableColumnShardConfig()->SetBulkUpsertRequireAllColumns(false);
+        runnerSettings.SetS3ActorsFactory(s3ActorsFactory);
+        
+        TKikimrRunner kikimr(runnerSettings);
+        
+        Singleton<NKikimr::NWrappers::NExternalStorage::TFakeExternalStorage>()->SetSecretKey("fakeSecret");
+        
+        kikimr.GetTestServer().GetRuntime()->SetLogPriority(NKikimrServices::TX_TIERING, NActors::NLog::PRI_DEBUG);
+        kikimr.GetTestServer().GetRuntime()->SetLogPriority(NKikimrServices::TX_COLUMNSHARD_ACTUALIZATION, NActors::NLog::PRI_DEBUG);
+        kikimr.GetTestServer().GetRuntime()->SetLogPriority(NKikimrServices::TX_COLUMNSHARD_BLOBS_TIER, NActors::NLog::PRI_DEBUG);
+        Tests::NCommon::TLoggerInit(kikimr).Initialize();
+        
+        auto tc = kikimr.GetTableClient();
+        auto session = tc.CreateSession().GetValueSync().GetSession();
+        
+        TLocalHelper olapHelper(kikimr);
+        olapHelper.CreateTestOlapTable();
+        
+        const TString createSecretsQuery = fmt::format(R"(
+            CREATE SECRET `{secret_access_key_id}` WITH (value="minio");
+            CREATE SECRET `{secret_access_key}` WITH (value="minio123");
+        )",
+            "secret_access_key_id"_a = secretAccessKeyId,
+            "secret_access_key"_a = secretAccessKey
+        );
+
+        auto result = session.ExecuteSchemeQuery(createSecretsQuery).GetValueSync();
+        UNIT_ASSERT_C(result.GetStatus() == NYdb::EStatus::SUCCESS, result.GetIssues().ToString());
+        
+        const TString location = "http://fake.fake/olap-tier1";
+        const TString createEDSQuery = fmt::format(R"(
+            CREATE EXTERNAL DATA SOURCE `{external_source}` WITH (
+                SOURCE_TYPE="ObjectStorage",
+                LOCATION="{location}",
+                AUTH_METHOD="AWS",
+                AWS_ACCESS_KEY_ID_SECRET_PATH="{secret_access_key_id}",
+                AWS_SECRET_ACCESS_KEY_SECRET_PATH="{secret_access_key}",
+                AWS_REGION="ru-central-1"
+            );
+        )",
+            "external_source"_a = externalDataSourceName,
+            "location"_a = location,
+            "secret_access_key_id"_a = secretAccessKeyId,
+            "secret_access_key"_a = secretAccessKey
+        );
+
+        result = session.ExecuteSchemeQuery(createEDSQuery).GetValueSync();
+        UNIT_ASSERT_C(result.GetStatus() == NYdb::EStatus::SUCCESS, result.GetIssues().ToString());
+        
+        const TString setTieringQuery = fmt::format(R"(
+            ALTER TABLE `{table_name}` SET TTL Interval("P10D") TO EXTERNAL DATA SOURCE `{external_source}` ON timestamp
+        )",
+            "table_name"_a = tableName,
+            "external_source"_a = externalDataSourceName
+        );
+
+        result = session.ExecuteSchemeQuery(setTieringQuery).GetValueSync();
+        UNIT_ASSERT_C(result.GetStatus() == NYdb::EStatus::SUCCESS, result.GetIssues().ToString());
+        
+        WriteTestData(kikimr, tableName, 0, 3600000000, 1000);
+        
+        auto csController = NKikimr::NYDBTest::TControllers::RegisterCSControllerGuard<NKikimr::NOlap::TWaitCompactionController>();
+        csController->WaitCompactions(TDuration::Seconds(10));
+        csController->WaitActualization(TDuration::Seconds(10));
+        
+        Sleep(TDuration::Seconds(5));
+        
+        auto tableClient = kikimr.GetTableClient();
+        auto selectQuery = TStringBuilder() << R"(
+            SELECT
+                TierName, SUM(ColumnRawBytes) AS RawBytes, SUM(Rows) AS Rows
+            FROM `)" << tableName << R"(/.sys/primary_index_portion_stats`
+            WHERE Activity == 1
+            GROUP BY TierName
+        )";
+        
+        auto rows = ExecuteScanQuery(tableClient, selectQuery);
+        
+        bool foundDefaultTier = false;
+        for (auto&& row : rows) {
+            auto tierName = GetUtf8(row.at("TierName"));
+            if (tierName == "__DEFAULT") {
+                foundDefaultTier = true;
+            }
+        }
+        
+        UNIT_ASSERT_C(foundDefaultTier, "Data should remain in default tier due to secret access error");
+    }
+}
+
+Y_TEST_HOOK_BEFORE_RUN(InitAwsAPIForTiering) {
+    NKikimr::InitAwsAPI();
+}
+
+Y_TEST_HOOK_AFTER_RUN(ShutdownAwsAPIForTiering) {
+    NKikimr::ShutdownAwsAPI();
 }
 
 } // namespace NKikimr::NKqp
